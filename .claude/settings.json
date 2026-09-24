@@ -4,6 +4,9 @@
       "Read",
       "Glob",
       "Grep",
+      "Edit",
+      "Write",
+      "NotebookEdit",
 
       "Bash(git status:*)",
       "Bash(git log:*)",
