@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T10:30:00Z",
+  "title": "Design System: Hoje Há Jogo",
+  "extensions": {
+    "colorMeta": {
+      "ouro": { "role": "primary", "displayName": "Ouro de troféu", "canonical": "#d4af37", "tonalRamp": ["#2b2308","#4a3c0e","#6b5615","#8c711c","#ad8c24","#d4af37","#e3c866","#f2e2ad"] },
+      "verde-confirmado": { "role": "secondary", "displayName": "Verde confirmado", "canonical": "#4ade80", "tonalRamp": ["#08240f","#0d3d1a","#136026","#1a8334","#22a644","#4ade80","#86efac","#c9f7d8"] },
+      "verde-solido": { "role": "secondary", "displayName": "Verde sólido de acção", "canonical": "#1ea851", "tonalRamp": ["#04240f","#07401b","#0a5c27","#0e7834","#159442","#1ea851","#4dc47b","#9be0b6"] },
+      "vermelho-divida": { "role": "tertiary", "displayName": "Vermelho de dívida", "canonical": "#f87171", "tonalRamp": ["#2d0b0b","#4d1212","#701a1a","#932525","#c03434","#dc2626","#f87171","#fca5a5"] },
+      "ambar-aviso": { "role": "tertiary", "displayName": "Âmbar de aviso", "canonical": "#d97706", "tonalRamp": ["#2b1802","#4a2904","#6b3c06","#8c4f08","#ad620a","#d97706","#f0a83d","#fbd28c"] },
+      "azul-guarda-redes": { "role": "tertiary", "displayName": "Azul de guarda-redes", "canonical": "#2563eb", "tonalRamp": ["#0a1733","#102552","#163472","#1c4494","#2153bd","#2563eb","#60a5fa","#93c5fd"] },
+      "fundo-campo": { "role": "neutral", "displayName": "Fundo de campo", "canonical": "#0a0b08", "tonalRamp": ["#0a0b08","#14160f","#1d1f16","#23271b","#2e3324","#565c4d","#8a9080","#d8dbd2"] },
+      "superficie": { "role": "neutral", "displayName": "Superfície", "canonical": "#14160f", "tonalRamp": ["#0a0b08","#14160f","#1d1f16","#23271b","#2e3324","#565c4d","#8a9080","#d8dbd2"] },
+      "linha": { "role": "neutral", "displayName": "Linha", "canonical": "#23271b", "tonalRamp": ["#0a0b08","#14160f","#1d1f16","#23271b","#2e3324","#565c4d","#8a9080","#d8dbd2"] },
+      "texto-suave": { "role": "neutral", "displayName": "Texto suave", "canonical": "#8a9080", "tonalRamp": ["#0a0b08","#14160f","#23271b","#3d4235","#565c4d","#727a68","#8a9080","#d8dbd2"] }
+    },
+    "typographyMeta": {
+      "marcador": { "displayName": "Marcador", "purpose": "Contagens decrescentes, saldos e o logótipo. O elemento mais alto de cada ecrã." },
+      "titulo": { "displayName": "Título", "purpose": "Nomes de grupo e cabeçalhos de secção." },
+      "corpo": { "displayName": "Corpo", "purpose": "A maior parte do texto da app, entre 11 e 13px." },
+      "etiqueta": { "displayName": "Etiqueta", "purpose": "Maiúsculas espaçadas que dizem o que o número é: GRUPO, PRÓXIMO JOGO, CONFIRMADOS." }
+    },
+    "shadows": [
+      { "name": "levantado", "value": "0 2px 8px rgba(0,0,0,0.45)", "purpose": "PROPOSTO, ainda não implementado. Cartões accionáveis." },
+      { "name": "flutuante", "value": "0 8px 24px rgba(0,0,0,0.6)", "purpose": "PROPOSTO. Menus, folhas e diálogos por cima do conteúdo." },
+      { "name": "aceso", "value": "0 0 0 2px rgba(212,175,55,0.35)", "purpose": "PROPOSTO. Foco de teclado e estado seleccionado." }
+    ],
+    "motion": [
+      { "name": "transicao-padrao", "value": "0.2s ease", "purpose": "Mudanças de estado em botões e chips." }
+    ],
+    "breakpoints": [
+      { "name": "telemovel", "value": "320px" },
+      { "name": "coluna-maxima", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão primário",
+      "kind": "button",
+      "refersTo": "botao-primario",
+      "description": "A acção principal do ecrã. Um por ecrã, sempre dourado.",
+      "html": "<button class=\"ds-btn-primario\">⚽ Criar grupo grátis</button>",
+      "css": ".ds-btn-primario { width: 100%; padding: 16px; background: #d4af37; color: #0a0b08; border: none; border-radius: 14px; font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 16px; cursor: pointer; transition: background 0.2s, transform 0.2s; } .ds-btn-primario:hover { background: #e3c866; transform: translateY(-1px); } .ds-btn-primario:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(212,175,55,0.35); }"
+    },
+    {
+      "name": "Botão confirmar presença",
+      "kind": "button",
+      "refersTo": "botao-confirmar",
+      "description": "O gesto central da app: dizer que se vai jogar.",
+      "html": "<button class=\"ds-btn-confirmar\">✓ CONFIRMAR PRESENÇA</button>",
+      "css": ".ds-btn-confirmar { width: 100%; padding: 16px; background: #1ea851; color: #04240f; border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 1px; cursor: pointer; transition: background 0.2s; } .ds-btn-confirmar:hover { background: #22c55e; } .ds-btn-confirmar:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(212,175,55,0.35); }"
+    },
+    {
+      "name": "Botão secundário",
+      "kind": "button",
+      "refersTo": "botao-secundario",
+      "description": "Alternativa sem cor, mesma forma do primário.",
+      "html": "<button class=\"ds-btn-secundario\">📲 Tenho um código de convite</button>",
+      "css": ".ds-btn-secundario { width: 100%; padding: 16px; background: #14160f; color: #ffffff; border: 1px solid #23271b; border-radius: 14px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: border-color 0.2s; } .ds-btn-secundario:hover { border-color: #565c4d; } .ds-btn-secundario:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(212,175,55,0.35); }"
+    },
+    {
+      "name": "Chip de estado",
+      "kind": "chip",
+      "refersTo": "chip-estado",
+      "description": "Contagem por estado: confirmados, sem resposta, em dívida.",
+      "html": "<span class=\"ds-chip ds-chip-verde\"><i></i>4 confirmados</span> <span class=\"ds-chip ds-chip-ambar\"><i></i>19 sem resposta</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border-radius: 99px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 12px; } .ds-chip i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; } .ds-chip-verde { background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.40); color: #4ade80; } .ds-chip-ambar { background: rgba(217,119,6,0.10); border: 1px solid rgba(217,119,6,0.40); color: #fbbf24; }"
+    },
+    {
+      "name": "Cartão",
+      "kind": "card",
+      "refersTo": "cartao",
+      "description": "O contentor base: superfície sobre o fundo, separada por linha de 1px.",
+      "html": "<div class=\"ds-cartao\"><div class=\"ds-etiqueta\">MEALHEIRO</div><div class=\"ds-valor\">47,50 €</div></div>",
+      "css": ".ds-cartao { background: #14160f; border: 1px solid #23271b; border-radius: 12px; padding: 14px; font-family: 'DM Sans', sans-serif; } .ds-etiqueta { font-family: 'Bebas Neue', Impact, cursive; font-size: 11px; letter-spacing: 2px; color: #8a9080; } .ds-valor { font-family: 'Bebas Neue', Impact, cursive; font-size: 28px; color: #4ade80; line-height: 1; margin-top: 4px; }"
+    },
+    {
+      "name": "Marcador",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "O componente de assinatura: etiqueta muda, contexto pequeno à esquerda, número enorme em dourado à direita.",
+      "html": "<div class=\"ds-marcador\"><div><div class=\"ds-etiqueta\">PRÓXIMO JOGO</div><div class=\"ds-quando\">Quarta-feira, 30 de Setembro</div><div class=\"ds-onde\">20:00 · Pavilhão Municipal</div></div><div class=\"ds-contagem\"><div class=\"ds-etiqueta\">FALTAM</div><div class=\"ds-numero\">4D 21H</div></div></div>",
+      "css": ".ds-marcador { display: flex; justify-content: space-between; align-items: center; gap: 14px; background: #14160f; border: 1px solid #23271b; border-radius: 12px; padding: 14px; font-family: 'DM Sans', sans-serif; } .ds-etiqueta { font-family: 'Bebas Neue', Impact, cursive; font-size: 11px; letter-spacing: 2px; color: #8a9080; } .ds-quando { color: #ffffff; font-size: 13px; font-weight: 700; margin-top: 4px; } .ds-onde { color: #8a9080; font-size: 11px; margin-top: 2px; } .ds-contagem { text-align: right; } .ds-numero { font-family: 'Bebas Neue', Impact, cursive; font-size: 34px; line-height: 1; letter-spacing: 1px; color: #d4af37; }"
+    },
+    {
+      "name": "Navegação de fundo",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Quatro separadores fixos no fundo; o activo fica dourado.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-ativo\"><span>⚽</span>Jogo</a><a class=\"ds-nav-item\"><span>💸</span>Finanças</a><a class=\"ds-nav-item\"><span>📊</span>Stats</a><a class=\"ds-nav-item\"><span>👤</span>Perfil</a></nav>",
+      "css": ".ds-nav { display: flex; justify-content: space-around; background: #0a0b08; border-top: 1px solid #23271b; padding: 8px 0; font-family: 'DM Sans', sans-serif; } .ds-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; font-weight: 700; color: #565c4d; cursor: pointer; } .ds-nav-item span { font-size: 18px; opacity: 0.45; } .ds-nav-item.ds-ativo { color: #d4af37; } .ds-nav-item.ds-ativo span { opacity: 1; } .ds-nav-item:hover { color: #8a9080; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "O marcador do pavilhão",
+    "overview": "Algarismos dourados sobre preto, maiúsculas condensadas, números grandes que se leem do outro lado do campo. A app não decora informação — expõe-a como um marcador expõe o resultado. A densidade é alta e deliberada: corpo de texto entre 11 e 13px, etiquetas a 9 e 10 em maiúsculas espaçadas, números a subir aos 28 e mais. Esse contraste é a assinatura do sistema. O fundo é quase preto com um desvio verde, não cinzento neutro — a única concessão atmosférica, e chega.",
+    "keyCharacteristics": [
+      "Números antes de palavras, sempre",
+      "Dourado raro, verde para estado, vermelho para dívida",
+      "Maiúsculas condensadas nas etiquetas e nos marcadores",
+      "Superfícies separadas por tom e linha fina, nunca por moldura pesada",
+      "Densidade alta: desenhado para telemóvel, uma mão, pouca atenção"
+    ],
+    "rules": [
+      { "name": "A Regra do Ouro Raro", "body": "O dourado ocupa no máximo um elemento por ecrã: ou a contagem decrescente, ou o botão principal. Dois dourados no mesmo ecrã anulam-se. Estado nunca é dourado.", "section": "colors" },
+      { "name": "A Regra das Três Respostas", "body": "Presença tem exactamente três cores: verde para quem vai, vermelho ou cinzento para quem não vai, âmbar para quem não respondeu.", "section": "colors" },
+      { "name": "A Regra da Etiqueta Muda", "body": "Etiquetas em maiúsculas espaçadas são sempre texto suave, nunca branco e nunca dourado. Dizem o que o número é, não competem com ele.", "section": "typography" },
+      { "name": "A Regra dos Onze", "body": "11px é o tamanho de corpo por defeito e 13px o máximo confortável. Texto maior só se for título ou número.", "section": "typography" },
+      { "name": "A Regra da Sombra Justificada", "body": "Uma sombra tem de significar que o elemento se pode tocar ou que está por cima de outra coisa. Sombra decorativa em superfícies paradas é proibida.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do pôr o número antes da frase. Se um ecrã responde a uma pergunta com um número, esse número é o elemento maior do ecrã.",
+      "Do separar superfícies com tom (#0a0b08 → #14160f) e linha de 1px (#23271b).",
+      "Do usar maiúsculas condensadas com 2px de espaçamento nas etiquetas, sempre em texto suave.",
+      "Do manter o corpo de texto a 11–13px; esta app é densa de propósito.",
+      "Do dar cor à borda para mostrar estado, mantendo a espessura de 1px."
+    ],
+    "donts": [
+      "Don't usar dourado para estado, nem pôr dois elementos dourados no mesmo ecrã.",
+      "Don't engrossar bordas para destacar algo.",
+      "Don't acrescentar sombras decorativas a superfícies paradas.",
+      "Don't introduzir uma terceira família tipográfica.",
+      "Don't usar o azul (#2563eb) para nada que não seja a posição de guarda-redes.",
+      "Don't reorganizar em várias colunas em ecrãs largos."
+    ]
+  }
+}
