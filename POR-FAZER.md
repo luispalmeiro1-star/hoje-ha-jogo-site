@@ -44,11 +44,11 @@ créditos** (ficou por fazer por falta de créditos semanais nesta sessão):
    `TreasurerBalances`/despesas, que já usam bem os tokens do sistema).
    Unificar; se hero/compacto precisar de diferença, que seja de tamanho, não
    de cor.
-3. **[P1] Duas fontes de verdade para o mesmo saldo** — o gráfico recalcula a
-   partir de `history`; o "SALDO ATUAL" vem de `piggybank` calculado noutro
-   lado. Sem garantia visível de que convergem sempre. Derivar o último ponto
-   do gráfico diretamente de `piggybank`, ou garantir por teste que batem
-   sempre certo.
+3. **[P1] Duas fontes de verdade para o mesmo saldo — ✅ RESOLVIDO DE GRAÇA
+   (26/09/2026)** — quando o gráfico passou a agrupar por `closed_at`
+   somando todo o `history` (correção do item 1), ficou a somar exactamente
+   o mesmo total que `piggybank`. Matematicamente já não podem divergir;
+   não foi preciso nenhum código extra.
 4. **[P2] Simplificar o gráfico para poucos pontos** — um gráfico de linha
    completo (eixos + tooltip) para 2-4 pontos é complexidade a mais. Trocar
    por lista compacta "jogo → saldo" ou sparkline sem eixos enquanto há poucos
@@ -106,8 +106,10 @@ Por ordem de severidade:
    `#565c4d` para `#8a9080` (texto-suave). Publicado (commit `01f4f0c`).
 10. **[P2] Jogador: `MBWayButton` introduz ciano não documentado**, 5ª cor de
     destaque simultânea no ecrã de confirmação.
-11. **[P2] Admin: `GroupStatusCard` só mostra a mensagem mais otimista** —
-    pode esconder "falta guarda-redes" atrás de "quase completo".
+11. **[P2] Admin: `GroupStatusCard` só mostra a mensagem mais otimista —
+    ✅ FEITO (26/09/2026)** — o aviso de "faltam guarda-redes" passou a ser
+    empurrado primeiro para a lista, por isso ganha a "quase completo"
+    quando os dois são verdade ao mesmo tempo. Publicado (commit `0718334`).
 12. **[P3]** Landing: fallback SEO não usa tokens tipográficos; listas com
     bullets nativos do browser. Jogador: botão fica 600ms em "A processar..."
     sem feedback otimista na lista.
@@ -142,12 +144,13 @@ Por ordem de severidade:
    verde/azul). Publicado (commit `01f4f0c`).
 4. **[P1] Equipas: terceira equipa usa âmbar — ✅ FEITO (26/09/2026)** —
    trocado para laranja (`#ea580c`/`#fdba74`). Publicado (commit `01f4f0c`).
-5. **[P1] Equipas: bordas de 2px espalhadas pelo componente**, contra a
-   regra explícita de 1px.
-6. **[P1] Chat: falha silenciosa ao enviar mensagem** — `sendMessage` não
-   verifica `error` nem reverte o estado local (ao contrário do voto MVP,
-   que já faz isto bem); sem rede, a mensagem parece enviada mas nunca
-   chega ao grupo.
+5. **[P1] Equipas: bordas de 2px — ✅ FEITO (26/09/2026)** — trocadas por
+   1px (botão de sorteio, animação, cartões de equipa). Publicado
+   (commit `0718334`).
+6. **[P1] Chat: falha silenciosa ao enviar mensagem — ✅ FEITO
+   (26/09/2026)** — `sendMessage` agora verifica `error`, reverte a
+   mensagem otimista e avisa o utilizador, mesmo padrão do voto MVP.
+   Publicado (commit `0718334`).
 7. **[P1] Zona: inconsistência interna de cor — ✅ FEITO junto com o nº3
    (26/09/2026)** — dia selecionado passou a verde, igual ao concelho.
 8. **[P1] Zona: sem validação do contacto WhatsApp** — número mal escrito só
