@@ -76,17 +76,19 @@ reaproveitado na navegação.
 **Luís decidiu (26/09/2026): só registar na lista por agora, sem implementar.**
 Por ordem de severidade:
 
-1. **[P0] Ecrã do jogador viola a "Regra do Ouro Raro" do próprio DESIGN.md**
-   — countdown dourado + cartão de notificações dourado + cartão MVP dourado
-   podem coexistir no mesmo scroll. Mover o pedido de notificações para o
-   onboarding, ou recolorir.
+1. **[P0] Ecrã do jogador viola a "Regra do Ouro Raro" do próprio DESIGN.md
+   — ✅ FEITO (26/09/2026)** — a contagem decrescente do `FieldHeader` fica
+   como o único dourado do ecrã; o cartão de notificações e o cartão de
+   votação MVP passaram a neutro (`#23271b`/branco). Publicado (commit
+   `5bffc6d`).
 2. **[P0] Admin: duas linguagens de separador incompatíveis — ✅ FEITO
    (26/09/2026)** — a barra de sub-abas do admin deixou de usar o verde de
    "confirmar presença"; passou a um destaque neutro (`#23271b` + texto
    branco), sem semântica de cor. Publicado em produção (commit `01f4f0c`).
-3. **[P0] Admin: até 3 dourados simultâneos**, agravado pelo código de convite
-   gigante (48px) — pior justamente no primeiro grupo de um admin novo, o
-   cenário de aquisição mais comum.
+3. **[P0] Admin: até 3 dourados simultâneos — ✅ FEITO (26/09/2026)** — o
+   banner do código de convite (só aparece com o grupo vazio) e o cartão de
+   notificações partilhado passaram a neutro; só a contagem decrescente
+   continua dourada. Publicado (commit `5bffc6d`).
 4. **[P1] Jogador: cinzentos fora da paleta — ✅ FEITO (26/09/2026)** —
    172 ocorrências de `#6b7280`/`#9ca3af`/`#64748b`/`#4b5563` em todo o
    ficheiro (não só no jogador — também Equipas e Chat, ver item 3b nº9)
