@@ -188,12 +188,11 @@ Feito:
 
 Publicado em produção (`main`, commit `567e3b4`).
 
-**Por fazer, se quiser continuar a melhorar o "cativante" da página** (visto
-mas não implementado — exige código novo, não só troca de valores):
-- Animar o "8/12" e a barra de progresso do mockup a contar/encher ao
-  carregar a página, em vez de aparecerem já parados — é o único sítio da
-  app onde uma animação mostraria literalmente a promessa do produto ("a
-  lista enche-se sozinha").
+**Bloco 4 — ✅ FEITO (26/09/2026):** o "8/12" e a barra de progresso do
+mockup agora contam/enchem de 0 a 8 em 900ms ao carregar a página (a barra
+calcula a largura a partir do mesmo contador, sem lógica separada). Único
+movimento da página, mostra literalmente a promessa do título. Publicado
+em produção (`main`, commit `660d586`).
 
 ## 4. Ecrã de novidades dentro da app
 
