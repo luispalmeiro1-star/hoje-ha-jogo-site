@@ -60,21 +60,73 @@ créditos** (ficou por fazer por falta de créditos semanais nesta sessão):
 
 ---
 
-## 3. Ecrã de novidades dentro da app
+## 3. Achados da crítica de design — Landing, Jogador, Admin (26/09/2026)
+
+Crítica `/impeccable critique` aos 3 ecrãs mais visíveis: landing (`index.html`),
+ecrã do jogador (`PlayerView`, confirmação de presença) e admin (`AdminView`,
+aba "Jogo"). Notas: landing 15/20 (Bom), jogador 26/36 (Bom), admin 27/40
+(Aceitável). Relatório completo em
+`.impeccable/critique/2026-09-26T22-47-40Z__landing-playerview-adminview-jogo.md`.
+
+**Padrão comum aos três ecrãs** (mais importante que qualquer achado isolado): o
+sistema documentado no DESIGN.md é mais disciplinado do que o sistema
+implementado. Falta um "orçamento de cor por ecrã" — nada impede que 2-3
+dourados apareçam juntos, ou que o verde reservado a "confirmar presença" seja
+reaproveitado na navegação.
+
+**Luís decidiu (26/09/2026): só registar na lista por agora, sem implementar.**
+Por ordem de severidade:
+
+1. **[P0] Ecrã do jogador viola a "Regra do Ouro Raro" do próprio DESIGN.md**
+   — countdown dourado + cartão de notificações dourado + cartão MVP dourado
+   podem coexistir no mesmo scroll. Mover o pedido de notificações para o
+   onboarding, ou recolorir.
+2. **[P0] Admin: duas linguagens de separador incompatíveis** — o `BottomNav`
+   usa dourado para o separador ativo (correto), mas a barra de sub-abas do
+   admin (Jogo/Equipas/Jogadores/Gerir) usa o **mesmo verde reservado à ação
+   "confirmar presença"** para marcar a aba ativa. Unificar com o `BottomNav`
+   ou usar um verde claramente distinto.
+3. **[P0] Admin: até 3 dourados simultâneos**, agravado pelo código de convite
+   gigante (48px) — pior justamente no primeiro grupo de um admin novo, o
+   cenário de aquisição mais comum.
+4. **[P1] Jogador: cinzentos fora da paleta usados quase o dobro dos tokens
+   oficiais** (`#6b7280`×92, `#4b5563`×57 vs. `#8a9080`×62, `#565c4d`×27) —
+   substituir globalmente.
+5. **[P1] Jogador: carga vertical excessiva antes da lista de presença**
+   (6+ blocos condicionais) — recolher chat/zona/posição/equipas em
+   `ExpandableCard`s.
+6. **[P1] Admin: confirmar a própria presença duplica a `PlayerView`** e
+   empurra as ferramentas de gestão (dívidas, sem resposta, fechar jogo) para
+   depois do scroll.
+7. **[P1] Admin: Dívidas/Histórico (botões soltos) vs. Equipas/Jogadores/Gerir
+   (abas)** — dois sistemas de navegação para o mesmo conceito.
+8. **[P2] Landing: splash usa Arial Black em vez de Bebas Neue** — quebra a
+   marca na primeira impressão.
+9. **[P2] Landing: contraste insuficiente no rodapé** (`#565c4d` sobre
+   `#0a0a0a`, 2.9:1, mínimo AA é 4.5:1) — apanhado pelo detector automático.
+10. **[P2] Jogador: `MBWayButton` introduz ciano não documentado**, 5ª cor de
+    destaque simultânea no ecrã de confirmação.
+11. **[P2] Admin: `GroupStatusCard` só mostra a mensagem mais otimista** —
+    pode esconder "falta guarda-redes" atrás de "quase completo".
+12. **[P3]** Landing: fallback SEO não usa tokens tipográficos; listas com
+    bullets nativos do browser. Jogador: botão fica 600ms em "A processar..."
+    sem feedback otimista na lista.
+
+## 4. Ecrã de novidades dentro da app
 
 Ninguém soube do botão "não vou", do voto secreto no MVP, do lembrete da manhã
 do jogo nem do grupo de demonstração. Ver `IDEIAS-CONCORRENCIA.md`.
 
-## 4. Apagar mensagens do chat (admin)
+## 5. Apagar mensagens do chat (admin)
 
 Hoje não há nada a fazer se entrar spam num grupo. Ver
 `IDEIAS-CONCORRENCIA.md`.
 
-## 5. Cor e nome por equipa
+## 6. Cor e nome por equipa
 
 Resolve a confusão de quem é dos coletes. Ver `IDEIAS-CONCORRENCIA.md`.
 
-## 6. Estado "lesionado" no perfil
+## 7. Estado "lesionado" no perfil
 
 Evita mandar lembretes semanais a quem está a recuperar. Ver
 `IDEIAS-CONCORRENCIA.md`.
