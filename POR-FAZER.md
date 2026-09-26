@@ -112,6 +112,54 @@ Por ordem de severidade:
     bullets nativos do browser. Jogador: botão fica 600ms em "A processar..."
     sem feedback otimista na lista.
 
+## 3b. Achados da crítica de design — Equipas, Chat, Zona (26/09/2026)
+
+Crítica `/impeccable critique` ao Lote 1 dos ecrãs restantes: revelação de
+Equipas (`TeamsReveal`/`AutoTeamsDisplay`), `ChatView`, `ZonaView`. Notas:
+Equipas 26/40, Chat 22/40, Zona 23/40 (todos "Aceitável"). Relatório completo
+em `.impeccable/critique/2026-09-26T22-57-23Z__equipas-chatview-zonaview.md`.
+
+**Achado novo, mais grave que os das rondas anteriores:** o azul reservado ao
+guarda-redes está a ser usado como cor genérica de "info"/"seleção" em dois
+ecrãs diferentes (Equipas e Zona) — não é introduzir uma cor nova, é esvaziar
+o significado de uma cor que já tinha uma regra exclusiva no DESIGN.md.
+
+**Luís decidiu (26/09/2026): só registar na lista por agora, sem implementar.**
+Por ordem de severidade:
+
+1. **[P0] Equipas: a cor da "Equipa B" é o azul reservado ao guarda-redes**
+   (`TEAM_COLORS[1]`, `#2563eb`/`#60a5fa`) — um GR na Equipa B fica com o
+   badge de GR (também azul) dentro de um cartão já todo azul, a posição
+   desaparece dentro da cor da equipa. Escolher uma terceira cor não-azul.
+2. **[P0] Chat: o indicador de mensagem não lida está estruturalmente morto**
+   — as chamadas reais passam sempre `unreadChat={false}`, e o Chat nem é um
+   separador do `BottomNav` (é um botão dentro do ecrã de Jogo). Ninguém é
+   avisado de mensagem nova a não ser que abra o chat "por acaso" — mina
+   diretamente o propósito do chat como substituto do WhatsApp. **Único
+   achado funcional desta ronda, não só visual.**
+3. **[P0] Zona: o azul do GR reutilizado duas vezes** — na caixa de dica do
+   topo e no seletor de "dias habituais", ambos sem qualquer ligação à
+   posição de guarda-redes.
+4. **[P1] Equipas: terceira equipa usa âmbar**, a mesma cor de "sem
+   resposta" no resto da app.
+5. **[P1] Equipas: bordas de 2px espalhadas pelo componente**, contra a
+   regra explícita de 1px.
+6. **[P1] Chat: falha silenciosa ao enviar mensagem** — `sendMessage` não
+   verifica `error` nem reverte o estado local (ao contrário do voto MVP,
+   que já faz isto bem); sem rede, a mensagem parece enviada mas nunca
+   chega ao grupo.
+7. **[P1] Zona: inconsistência interna de cor** — concelho selecionado =
+   verde, dia selecionado = azul, duas metáforas para a mesma interação.
+8. **[P1] Zona: sem validação do contacto WhatsApp** — número mal escrito só
+   se descobre quando alguém tenta contactar e falha.
+9. **[P2]** Equipas: cinzentos fora da paleta em 6 sítios do componente.
+   Chat: sem editar/apagar mensagem própria; cinzentos fora da paleta no
+   nome/hora. Zona: pode ficar "disponível" sem zona definida; lista de 34
+   concelhos sem pesquisa nem ordem alfabética.
+10. **[P3]** Equipas: alvos de toque pequenos no seletor de mover jogador.
+    Chat: botão de enviar sem estado desabilitado; mensagens longas sem
+    quebra de palavra. Zona: escritas na BD sem tratamento de erro.
+
 ## 4. Ecrã de novidades dentro da app
 
 Ninguém soube do botão "não vou", do voto secreto no MVP, do lembrete da manhã
