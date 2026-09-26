@@ -160,6 +160,41 @@ Por ordem de severidade:
     Chat: botão de enviar sem estado desabilitado; mensagens longas sem
     quebra de palavra. Zona: escritas na BD sem tratamento de erro.
 
+## 3c. Landing real (LandingView, não o index.html) — ✅ FEITO (26/09/2026)
+
+Pedido pelo Luís: analisar a página que os visitantes reais veem (não o
+`index.html`, que é só o fallback SEO/no-JS já revisto no item 3 — o
+`LandingView` em `App.jsx` é bem mais trabalhado e é o que carrega de facto).
+
+**Hipótese principal para a conversão a zero em 28 dias (164 visitas, 136
+frias, 3 toques, 0 contas):** o CTA principal ficava muito provavelmente
+abaixo da dobra no telemóvel — cabeçalho + título + subtítulo (~280px) +
+mockup do telemóvel (~440px) = ~720px antes de qualquer botão, mais do que a
+altura visível da maioria dos ecrãs médios.
+
+Feito:
+1. Os 2 botões principais ("Criar grupo grátis" / "Ver um grupo a
+   funcionar") subiram para antes do mockup, garantindo que aparecem cedo
+   independentemente do tamanho do ecrã.
+2. Acrescentada a linha "Sem instalar. Abre no browser." — uma das 4
+   promessas centrais do PRODUCT.md que tinha desaparecido da página real.
+3. Corrigida a cor do link "Já tenho conta" (`#22c55e`, fora da paleta).
+4. Labels da grelha de funcionalidades trocados de nomes ("Presenças",
+   "Stats") para benefícios ("A lista faz-se sozinha", "Sabes quem falta
+   mais").
+5. Prova social honesta acrescentada: número real do grupo 37 (27
+   jogadores), sem inventar testemunhos — alinhado com a regra do
+   PRODUCT.md de "números reais ou nada".
+
+Publicado em produção (`main`, commit `567e3b4`).
+
+**Por fazer, se quiser continuar a melhorar o "cativante" da página** (visto
+mas não implementado — exige código novo, não só troca de valores):
+- Animar o "8/12" e a barra de progresso do mockup a contar/encher ao
+  carregar a página, em vez de aparecerem já parados — é o único sítio da
+  app onde uma animação mostraria literalmente a promessa do produto ("a
+  lista enche-se sozinha").
+
 ## 4. Ecrã de novidades dentro da app
 
 Ninguém soube do botão "não vou", do voto secreto no MVP, do lembrete da manhã
