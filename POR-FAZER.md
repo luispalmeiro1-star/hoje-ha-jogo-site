@@ -5,64 +5,76 @@ concorrentes estão em `IDEIAS-CONCORRENCIA.md`; aqui estão as coisas nossas.
 
 ---
 
-## 1. Corrigir o gráfico do mealheiro (Stats → Grupo)
+## 1. Corrigir o gráfico do mealheiro (Stats → Grupo) — ✅ FEITO (26/09/2026)
 
-**Reportado pelo Luís a 25/09/2026, com captura de ecrã. Está errado, não é só
-feio.**
+**Reportado pelo Luís a 25/09/2026, com captura de ecrã.**
 
-O que o ecrã mostra hoje:
+Causa confirmada nos dados reais (grupo 37): o gráfico só somava os jogos com
+jogadores, ignorando pagamentos avulsos (`players_count=0`) que o cartão do
+mealheiro já incluía — por isso o gráfico fechava em 5€ e o cartão em 23€.
+Corrigido em duas fases:
 
-- Um gráfico de linha **"Evolução do saldo (€)"** de 16/09 a 23/09, com o eixo
-  vertical de 0 a 8, a descer de ~7 para 5.
-- Por baixo, um cartão azul com **"SALDO ATUAL +23€"**, e ao lado
-  *total recebido +69€*, *pago em aluguer −46€*, *jogos 2*.
+1. Passou a agrupar por data e incluir todo o histórico (jogos + avulsos), não
+   só os jogos.
+2. Ajustado outra vez: usa `closed_at` (data real do pagamento) em vez de
+   `date` (data do jogo a que o pagamento avulso diz respeito) — um
+   pré-pagamento fechado hoje para o jogo da próxima semana não pode aparecer
+   no futuro no gráfico.
 
-**O problema é evidente sem ver o código: o gráfico diz 5€ e o cartão diz 23€,
-no mesmo ecrã e para a mesma coisa.** Uma das duas contas está errada, ou então
-estão a medir coisas diferentes com o mesmo nome — e nesse caso o nome é que
-está errado. 69 − 46 = 23, portanto o cartão fecha; a linha é que não bate
-certo com nada.
-
-Duas hipóteses a verificar no código antes de mexer:
-
-1. O gráfico usa outra fonte de dados (pagamentos individuais? só uma semana?) e
-   nunca foi ligado à mesma conta que o cartão.
-2. O gráfico está certo para o que mede, mas a legenda mente — se for "saldo
-   por jogo" ou "saldo naquela data", tem de o dizer.
-
-**Decidir também se o gráfico fica.** Com 2 jogos há dois pontos, e uma linha
-entre dois pontos não é uma evolução — é um traço. Alternativas a ponderar:
-
-- Barras por jogo (recebido vs. custo), que com poucos dados ainda se lê.
-- Nada de gráfico: só os números do cartão, que são os que interessam, mais o
-  detalhe no mealheiro.
-- Manter a linha, mas só a partir de 4 ou 5 jogos, e mostrar os números até lá.
-
-O Luís disse: *"Corrigir este gráfico, ou mudar para outro tipo de gráfico.
-Não está correto sequer."* A correcção da conta é obrigatória; a mudança de
-formato é decisão dele depois de ver a conta certa.
-
-Antes de desenhar seja o que for, ler a skill `dataviz` — e o `DESIGN.md`, que
-já diz que o azul (`#2563eb`) está reservado à posição de guarda-redes. Este
-cartão azul não respeita isso.
+Publicado em produção (`main`, commits `2b513da` e `b08554e`).
 
 ---
 
-## 2. Ecrã de novidades dentro da app
+## 2. Achados da crítica de design ao ecrã do Mealheiro (26/09/2026)
+
+Crítica `/impeccable critique` ao `GraficoMealheiro` + `PiggyBankCard`
+(Stats → Grupo → Mealheiro). Nota: **16/32** nas heurísticas de Nielsen.
+Relatório completo em
+`.impeccable/critique/2026-09-26T22-33-27Z__app-jsx-graficomealheiro-piggybankcard.md`.
+
+**Luís decidiu (26/09/2026): fazer tudo, por esta ordem, quando houver
+créditos** (ficou por fazer por falta de créditos semanais nesta sessão):
+
+1. **[P0] Cor do cartão contradiz o próprio DESIGN.md** — o cartão usa
+   gradiente turquesa (`#0891b2`→`#0e7490`), mas o DESIGN.md já diz "saldo do
+   mealheiro = verde confirmado (`#4ade80`)". Trocar gradiente e `stroke` do
+   gráfico para verde; fundo do cartão para `#14160f` + borda, como já faz a
+   variante `showHero=false` no mesmo ficheiro.
+2. **[P1] `PiggyBankCard` muda de paleta consoante quem o chama** — duas
+   linguagens visuais na mesma secção (o cartão hero turquesa vs.
+   `TreasurerBalances`/despesas, que já usam bem os tokens do sistema).
+   Unificar; se hero/compacto precisar de diferença, que seja de tamanho, não
+   de cor.
+3. **[P1] Duas fontes de verdade para o mesmo saldo** — o gráfico recalcula a
+   partir de `history`; o "SALDO ATUAL" vem de `piggybank` calculado noutro
+   lado. Sem garantia visível de que convergem sempre. Derivar o último ponto
+   do gráfico diretamente de `piggybank`, ou garantir por teste que batem
+   sempre certo.
+4. **[P2] Simplificar o gráfico para poucos pontos** — um gráfico de linha
+   completo (eixos + tooltip) para 2-4 pontos é complexidade a mais. Trocar
+   por lista compacta "jogo → saldo" ou sparkline sem eixos enquanto há poucos
+   jogos.
+5. **[P3] Cinzentos Tailwind soltos** (`#6b7280`, `#fca5a5`, `#86efac`...) em
+   vez dos tokens do sistema (`#8a9080` texto-suave, `#565c4d`
+   texto-apagado).
+
+---
+
+## 3. Ecrã de novidades dentro da app
 
 Ninguém soube do botão "não vou", do voto secreto no MVP, do lembrete da manhã
 do jogo nem do grupo de demonstração. Ver `IDEIAS-CONCORRENCIA.md`.
 
-## 3. Apagar mensagens do chat (admin)
+## 4. Apagar mensagens do chat (admin)
 
 Hoje não há nada a fazer se entrar spam num grupo. Ver
 `IDEIAS-CONCORRENCIA.md`.
 
-## 4. Cor e nome por equipa
+## 5. Cor e nome por equipa
 
 Resolve a confusão de quem é dos coletes. Ver `IDEIAS-CONCORRENCIA.md`.
 
-## 5. Estado "lesionado" no perfil
+## 6. Estado "lesionado" no perfil
 
 Evita mandar lembretes semanais a quem está a recuperar. Ver
 `IDEIAS-CONCORRENCIA.md`.
