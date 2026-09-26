@@ -53,9 +53,9 @@ créditos** (ficou por fazer por falta de créditos semanais nesta sessão):
    completo (eixos + tooltip) para 2-4 pontos é complexidade a mais. Trocar
    por lista compacta "jogo → saldo" ou sparkline sem eixos enquanto há poucos
    jogos.
-5. **[P3] Cinzentos Tailwind soltos** (`#6b7280`, `#fca5a5`, `#86efac`...) em
-   vez dos tokens do sistema (`#8a9080` texto-suave, `#565c4d`
-   texto-apagado).
+5. **[P3] Cinzentos Tailwind soltos — ✅ FEITO (26/09/2026)** — substituídos
+   pelos tokens do sistema em todo o ficheiro (ver item 3, achado nº4, que
+   cobre a substituição global).
 
 ---
 
@@ -87,9 +87,10 @@ Por ordem de severidade:
 3. **[P0] Admin: até 3 dourados simultâneos**, agravado pelo código de convite
    gigante (48px) — pior justamente no primeiro grupo de um admin novo, o
    cenário de aquisição mais comum.
-4. **[P1] Jogador: cinzentos fora da paleta usados quase o dobro dos tokens
-   oficiais** (`#6b7280`×92, `#4b5563`×57 vs. `#8a9080`×62, `#565c4d`×27) —
-   substituir globalmente.
+4. **[P1] Jogador: cinzentos fora da paleta — ✅ FEITO (26/09/2026)** —
+   172 ocorrências de `#6b7280`/`#9ca3af`/`#64748b`/`#4b5563` em todo o
+   ficheiro (não só no jogador — também Equipas e Chat, ver item 3b nº9)
+   substituídas por `#8a9080`/`#565c4d`. Publicado (commit `a2a694c`).
 5. **[P1] Jogador: carga vertical excessiva antes da lista de presença**
    (6+ blocos condicionais) — recolher chat/zona/posição/equipas em
    `ExpandableCard`s.
@@ -151,10 +152,10 @@ Por ordem de severidade:
    (26/09/2026)** — dia selecionado passou a verde, igual ao concelho.
 8. **[P1] Zona: sem validação do contacto WhatsApp** — número mal escrito só
    se descobre quando alguém tenta contactar e falha.
-9. **[P2]** Equipas: cinzentos fora da paleta em 6 sítios do componente.
-   Chat: sem editar/apagar mensagem própria; cinzentos fora da paleta no
-   nome/hora. Zona: pode ficar "disponível" sem zona definida; lista de 34
-   concelhos sem pesquisa nem ordem alfabética.
+9. **[P2]** Equipas: ~~cinzentos fora da paleta~~ ✅ feito junto com o item 3
+   nº4. Chat: sem editar/apagar mensagem própria; ~~cinzentos fora da
+   paleta no nome/hora~~ ✅ feito. Zona: pode ficar "disponível" sem zona
+   definida; lista de 34 concelhos sem pesquisa nem ordem alfabética.
 10. **[P3]** Equipas: alvos de toque pequenos no seletor de mover jogador.
     Chat: botão de enviar sem estado desabilitado; mensagens longas sem
     quebra de palavra. Zona: escritas na BD sem tratamento de erro.
