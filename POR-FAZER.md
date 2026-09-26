@@ -35,11 +35,10 @@ Relatório completo em
 **Luís decidiu (26/09/2026): fazer tudo, por esta ordem, quando houver
 créditos** (ficou por fazer por falta de créditos semanais nesta sessão):
 
-1. **[P0] Cor do cartão contradiz o próprio DESIGN.md** — o cartão usa
-   gradiente turquesa (`#0891b2`→`#0e7490`), mas o DESIGN.md já diz "saldo do
-   mealheiro = verde confirmado (`#4ade80`)". Trocar gradiente e `stroke` do
-   gráfico para verde; fundo do cartão para `#14160f` + borda, como já faz a
-   variante `showHero=false` no mesmo ficheiro.
+1. **[P0] Cor do cartão contradiz o próprio DESIGN.md — ✅ FEITO (26/09/2026)**
+   — cartão passou de gradiente turquesa a `#14160f`+borda com números a
+   verde, igual à variante `showHero=false`; `stroke` do gráfico também
+   passou a verde. Publicado em produção (`main`, commit `01f4f0c`).
 2. **[P1] `PiggyBankCard` muda de paleta consoante quem o chama** — duas
    linguagens visuais na mesma secção (o cartão hero turquesa vs.
    `TreasurerBalances`/despesas, que já usam bem os tokens do sistema).
@@ -81,11 +80,10 @@ Por ordem de severidade:
    — countdown dourado + cartão de notificações dourado + cartão MVP dourado
    podem coexistir no mesmo scroll. Mover o pedido de notificações para o
    onboarding, ou recolorir.
-2. **[P0] Admin: duas linguagens de separador incompatíveis** — o `BottomNav`
-   usa dourado para o separador ativo (correto), mas a barra de sub-abas do
-   admin (Jogo/Equipas/Jogadores/Gerir) usa o **mesmo verde reservado à ação
-   "confirmar presença"** para marcar a aba ativa. Unificar com o `BottomNav`
-   ou usar um verde claramente distinto.
+2. **[P0] Admin: duas linguagens de separador incompatíveis — ✅ FEITO
+   (26/09/2026)** — a barra de sub-abas do admin deixou de usar o verde de
+   "confirmar presença"; passou a um destaque neutro (`#23271b` + texto
+   branco), sem semântica de cor. Publicado em produção (commit `01f4f0c`).
 3. **[P0] Admin: até 3 dourados simultâneos**, agravado pelo código de convite
    gigante (48px) — pior justamente no primeiro grupo de um admin novo, o
    cenário de aquisição mais comum.
@@ -100,10 +98,11 @@ Por ordem de severidade:
    depois do scroll.
 7. **[P1] Admin: Dívidas/Histórico (botões soltos) vs. Equipas/Jogadores/Gerir
    (abas)** — dois sistemas de navegação para o mesmo conceito.
-8. **[P2] Landing: splash usa Arial Black em vez de Bebas Neue** — quebra a
-   marca na primeira impressão.
-9. **[P2] Landing: contraste insuficiente no rodapé** (`#565c4d` sobre
-   `#0a0a0a`, 2.9:1, mínimo AA é 4.5:1) — apanhado pelo detector automático.
+8. **[P2] Landing: splash usa Bebas Neue — ✅ FEITO (26/09/2026)** — trocado
+   de Arial Black; a fonte passou também a ser carregada no `<head>` (Google
+   Fonts) para estar disponível a tempo do splash. Publicado (commit `01f4f0c`).
+9. **[P2] Landing: contraste do rodapé — ✅ FEITO (26/09/2026)** — subido de
+   `#565c4d` para `#8a9080` (texto-suave). Publicado (commit `01f4f0c`).
 10. **[P2] Jogador: `MBWayButton` introduz ciano não documentado**, 5ª cor de
     destaque simultânea no ecrã de confirmação.
 11. **[P2] Admin: `GroupStatusCard` só mostra a mensagem mais otimista** —
@@ -127,29 +126,29 @@ o significado de uma cor que já tinha uma regra exclusiva no DESIGN.md.
 **Luís decidiu (26/09/2026): só registar na lista por agora, sem implementar.**
 Por ordem de severidade:
 
-1. **[P0] Equipas: a cor da "Equipa B" é o azul reservado ao guarda-redes**
-   (`TEAM_COLORS[1]`, `#2563eb`/`#60a5fa`) — um GR na Equipa B fica com o
-   badge de GR (também azul) dentro de um cartão já todo azul, a posição
-   desaparece dentro da cor da equipa. Escolher uma terceira cor não-azul.
+1. **[P0] Equipas: a cor da "Equipa B" é o azul reservado ao guarda-redes —
+   ✅ FEITO (26/09/2026)** — trocado para roxo (`#7c3aed`/`#c4b5fd`), já
+   presente na paleta de avatares. Publicado (commit `01f4f0c`).
 2. **[P0] Chat: o indicador de mensagem não lida está estruturalmente morto**
    — as chamadas reais passam sempre `unreadChat={false}`, e o Chat nem é um
    separador do `BottomNav` (é um botão dentro do ecrã de Jogo). Ninguém é
    avisado de mensagem nova a não ser que abra o chat "por acaso" — mina
    diretamente o propósito do chat como substituto do WhatsApp. **Único
    achado funcional desta ronda, não só visual.**
-3. **[P0] Zona: o azul do GR reutilizado duas vezes** — na caixa de dica do
-   topo e no seletor de "dias habituais", ambos sem qualquer ligação à
-   posição de guarda-redes.
-4. **[P1] Equipas: terceira equipa usa âmbar**, a mesma cor de "sem
-   resposta" no resto da app.
+3. **[P0] Zona: o azul do GR reutilizado duas vezes — ✅ FEITO (26/09/2026)**
+   — caixa de dica e seletor de "dias habituais" passaram a verde, igual ao
+   seletor de concelho ao lado (resolve também o achado nº7, a inconsistência
+   verde/azul). Publicado (commit `01f4f0c`).
+4. **[P1] Equipas: terceira equipa usa âmbar — ✅ FEITO (26/09/2026)** —
+   trocado para laranja (`#ea580c`/`#fdba74`). Publicado (commit `01f4f0c`).
 5. **[P1] Equipas: bordas de 2px espalhadas pelo componente**, contra a
    regra explícita de 1px.
 6. **[P1] Chat: falha silenciosa ao enviar mensagem** — `sendMessage` não
    verifica `error` nem reverte o estado local (ao contrário do voto MVP,
    que já faz isto bem); sem rede, a mensagem parece enviada mas nunca
    chega ao grupo.
-7. **[P1] Zona: inconsistência interna de cor** — concelho selecionado =
-   verde, dia selecionado = azul, duas metáforas para a mesma interação.
+7. **[P1] Zona: inconsistência interna de cor — ✅ FEITO junto com o nº3
+   (26/09/2026)** — dia selecionado passou a verde, igual ao concelho.
 8. **[P1] Zona: sem validação do contacto WhatsApp** — número mal escrito só
    se descobre quando alguém tenta contactar e falha.
 9. **[P2]** Equipas: cinzentos fora da paleta em 6 sítios do componente.
