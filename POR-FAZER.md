@@ -19,13 +19,13 @@ de votação MVP; texto abaixo de 11px espalhado pelos gráficos de stats).
 
 ## Decisões em aberto (do Luís)
 
-- **Ser grátis e não exigir instalação** são para ficar como constrangimentos
-  duráveis, ou podem mudar? Hoje estão registados no `PRODUCT.md` apenas como
-  o que está em produção.
-- O `PRODUCT.md` e o `DESIGN.md` devem mudar-se para junto do código da app
-  (`hoje-ha-jogo`), em vez de ficarem no repositório do site?
-- **Relevo/sombras:** o Luís disse que quer, o `DESIGN.md` tem um vocabulário
-  proposto, mas nada foi implementado. A app continua plana.
+- **Não exigir instalação** fica como está por agora (constrangimento não
+  declarado durável) — só "grátis" foi confirmado como promessa fixa
+  (27/09/2026, registado no `PRODUCT.md`).
+- **`PRODUCT.md`/`DESIGN.md` ficam no repositório do site** (decisão tomada
+  27/09/2026): é aqui que a skill `/impeccable critique` já os vai buscar
+  automaticamente; mudá-los para o repositório da app obrigava a montar de
+  novo essa ligação sem ganhar nada em troca.
 
 ## A medir, sem fazer nada
 
@@ -43,6 +43,14 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **27/09/2026:**
+- **Relevo/sombras — ✅ FEITO.** Publicado em `main` (commit `79d88b5`). O
+  vocabulário já estava escrito no `DESIGN.md`, nunca implementado. Aplicado
+  ao nível das classes CSS partilhadas (não em cada instância), seguindo a
+  Regra da Sombra Justificada: "Levantado" no cabeçalho do jogo, cartões
+  expansíveis (Zona/Financeiro/Stats/Gerir), cartão de saldo do mealheiro,
+  banner de estado e botões primários; "Flutuante" na barra de navegação e
+  na folha do tutorial inicial; "Aceso" como novo anel dourado de foco por
+  teclado (não existia nenhum indicador de foco visível antes).
 - **Fase 4 (ícone Android + 4 funcionalidades novas) — ✅ FEITO.** Publicado
   em `main` (commits `16732e0`, `49dd737`, `4d22711`, `552d830`, `5d38d4c`):
   - **Ícone grande e desfocado no Android — encontrada a causa e corrigida.**

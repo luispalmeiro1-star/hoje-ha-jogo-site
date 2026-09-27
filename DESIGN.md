@@ -200,21 +200,27 @@ Não há comportamento responsivo digno desse nome: foi desenhada para telemóve
 
 ## Elevation & Depth
 
-**O que está implementado hoje:** sistema plano. Duas sombras em cerca de 5300
-linhas de código. A profundidade vem inteiramente de camadas de tom — fundo
-`#0a0b08`, superfície `#14160f` — e de linhas de 1px em `#23271b`.
+**Implementado (27/09/2026).** O achatamento não era intenção, era acaso; o
+relevo abaixo já está em produção, aplicado ao nível das classes CSS
+partilhadas (`.btn-primary`, `.btn-save-active`, `.status-banner`,
+`ExpandableCard`, `ExpandableSection`, o cabeçalho fixo do jogo, o cartão de
+saldo do mealheiro, a barra de navegação e a folha do tutorial inicial), não
+em cada instância — é assim que o efeito chega a dezenas de sítios com poucas
+alterações. A profundidade continua a vir também de camadas de tom — fundo
+`#0a0b08`, superfície `#14160f` — e de linhas de 1px em `#23271b`; a sombra é
+um reforço, não a substitui.
 
-**Decisão do utilizador (setembro de 2026):** o achatamento não foi intenção, foi
-acaso, e há vontade de introduzir algum relevo. Isto é direcção nova, não estado
-extraído: até haver implementação, o sistema plano continua a ser a verdade.
-
-### Shadow Vocabulary (proposto, ainda não implementado)
+### Shadow Vocabulary
 - **Levantado** (`box-shadow: 0 2px 8px rgba(0,0,0,0.45)`): cartões que são
-  accionáveis — o cartão do próximo jogo, os cartões de acção do admin.
-- **Flutuante** (`box-shadow: 0 8px 24px rgba(0,0,0,0.6)`): menus, folhas que
-  sobem do fundo, diálogos.
-- **Aceso** (`box-shadow: 0 0 0 2px rgba(212,175,55,0.35)`): foco de teclado e
-  estado seleccionado, em vez de mudar a cor da borda.
+  accionáveis — o cartão do próximo jogo, botões primários, cartões
+  expansíveis, o banner de estado, o cartão de saldo do mealheiro.
+- **Flutuante** (`box-shadow: 0 -8px 24px rgba(0,0,0,0.6)` quando o elemento
+  está encostado ao fundo do ecrã, `0 8px 24px rgba(0,0,0,0.6)` nos restantes
+  casos): menus, folhas que sobem do fundo, diálogos, toasts, a barra de
+  navegação fixa.
+- **Aceso** (`box-shadow: 0 0 0 2px rgba(212,175,55,0.6)`): foco de teclado em
+  botões, links e campos — não existia nenhum indicador de foco visível antes
+  disto.
 
 ### Named Rules
 
