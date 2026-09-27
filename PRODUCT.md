@@ -77,13 +77,14 @@ Constrangimentos duráveis, confirmados pelo utilizador:
   em aberto, **não** um facto — não deve ser assumido nem em código nem em copy.
 - **Entra-se por convite.** Para entrar num grupo é preciso código, QR Code ou
   link de quem já lá está. Os grupos não são públicos nem pesquisáveis.
+- **É e vai continuar a ser grátis, sem publicidade e sem vender dados.**
+  Confirmado pelo Luís (27/09/2026) como promessa permanente, não apenas o
+  estado atual — nenhum trabalho futuro deve introduzir preços, planos pagos
+  ou publicidade.
 
 Factos actuais que **não** foram declarados duráveis, e que por isso não devem ser
 tratados como promessas permanentes nem contrariados por invenção:
 
-- A app é hoje **gratuita, sem publicidade e não vende dados** — está escrito no
-  rodapé do site. Nenhum trabalho futuro deve inventar preços, planos ou
-  publicidade; mas também não deve escrever que será grátis para sempre.
 - A app é hoje uma **PWA que abre no link, sem instalação**. Uma app nativa não
   está excluída; enquanto não houver decisão, o produto é o que está em produção.
 
