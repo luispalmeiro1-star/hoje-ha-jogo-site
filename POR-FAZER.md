@@ -10,10 +10,9 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-Nada pendente de momento — ver "Prioridade seguinte" nos relatórios em
-`.impeccable/critique/` para itens de polish menor deixados fora de escopo
-(dividir a secção "Configurações" do admin; ordenar/agrupar melhor a lista
-de votação MVP; texto abaixo de 11px espalhado pelos gráficos de stats).
+Nada pendente — todos os achados das críticas de design (`.impeccable/critique/`)
+estão feitos, incluindo os itens de polish menor que tinham ficado de fora
+das primeiras rondas.
 
 ---
 
@@ -41,6 +40,17 @@ de votação MVP; texto abaixo de 11px espalhado pelos gráficos de stats).
 
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
+
+**27/09/2026 (continuação):**
+- **Últimos itens de polish das críticas — ✅ FEITO.** Publicado em `main`
+  (commits `5e0eaf5`, `f625ed0`):
+  - Votação MVP ordenada por votos; nota a dizer que o voto é secreto.
+  - Chat: mensagens longas já quebram a linha.
+  - "Revelar equipas" deixa de usar o verde-sólido reservado.
+  - Gráficos de stats: eixos e legendas já não ficam abaixo de 11px.
+  - **"Configurações" do admin dividida em 3 blocos** ("Nome e dias",
+    "Jogo", "Formato e equipas"), cada um com o seu próprio "guardar" —
+    era o maior achado ainda por resolver de todas as críticas.
 
 **27/09/2026:**
 - **Relevo/sombras — ✅ FEITO.** Publicado em `main` (commit `79d88b5`). O
