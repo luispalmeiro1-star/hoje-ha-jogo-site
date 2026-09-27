@@ -81,7 +81,25 @@ mais trabalho do que valia a pena fazer sem confirmar primeiro.
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
-**27/09/2026 (continuação):**
+**27/09/2026 (continuação, 2ª ronda):**
+- **Os dois achados do `onboard` — ✅ FEITO.** Publicado em `main` (commit
+  `140e9d0`). Só os itens seguros de fazer sem ambiente de teste ao vivo:
+  - Grupo sem ninguém confirmado ainda passa a mostrar "⚽ Ainda ninguém
+    confirmou — sê o primeiro!" em vez de nenhuma mensagem.
+  - Tutorial do admin encolhido de 10 para 7 passos (dentro dos 3-7
+    recomendados): tirados os 4 slides de configuração inicial
+    (MBWay, dívidas, vaga aberta, configurar grupo), que já se descobrem
+    sozinhos em "Gerir" quando fizerem falta; ficam só "convidar" e "o
+    resto está em Gerir".
+  - De caminho (achado do `optimize`, risco zero): removidas 3
+    importações do Recharts (`BarChart`, `Bar`, `Cell`) nunca usadas.
+  - **Não fiz**, por pedirem confirmação ou um ambiente de teste que não
+    tenho aqui: transação na `resetGame` (harden), tratamento de erro nos
+    `load*` de leitura (harden), carregar o Recharts só quando preciso
+    (optimize — mudança estrutural ao ficheiro, risco de partir a build
+    sem poder testar ao vivo), testar em ecrãs de 320px (adapt), separar
+    o Perfil em conta/suporte (distill). Continuam registados acima em
+    "Por fazer agora".
 - **Levantamento com os restantes comandos `/impeccable` — ✅ FEITO.**
   Publicado em `main` (commit `5e57968`). Corrido `/impeccable onboard`
   (primeira experiência) e `/impeccable bolder` (landing), mais um
@@ -98,8 +116,8 @@ Registo condensado — detalhe completo nos relatórios em
   - **onboard**: revisto "criar grupo" e "entrar por convite" (já muito
     bem pensados, nada a mudar); identificado que um grupo novo sem
     ninguém confirmado não mostra nenhum incentivo, e que o tutorial do
-    admin tem 10 passos (mais do que os 3-7 recomendados) — nenhum dos
-    dois corrigido ainda, ficam para decisão do Luís.
+    admin tem 10 passos (mais do que os 3-7 recomendados) — ambos
+    corrigidos a seguir (ver entrada de hoje abaixo).
 - **Últimos itens de polish das críticas — ✅ FEITO.** Publicado em `main`
   (commits `5e0eaf5`, `f625ed0`):
   - Votação MVP ordenada por votos; nota a dizer que o voto é secreto.
