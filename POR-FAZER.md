@@ -10,47 +10,10 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-### Ícone grande e desfocado ao abrir a app pela primeira vez (reportado 27/09/2026)
-
-**O Luís (Android) reportou:** ao abrir a app a partir do ícone no ecrã
-principal, aparece o símbolo da app em grande, desfocado — antes do ecrã de
-arranque com o texto "HOJE HÁ JOGO" que já ajustámos (esse é texto, não é
-isto). É o ecrã de lançamento automático que o próprio telemóvel constrói a
-partir do ícone da app, não um ecrã nosso.
-
-**Investigação feita:** `vite.config.js` declara `icon-192.png` e
-`icon-512.png` para o manifest PWA (ambos com o tamanho real correto,
-confirmado por ficheiro). `index.html` só liga um `apple-touch-icon` de
-192px — isso explicaria o problema **no iOS** (ícone pequeno ampliado pelo
-sistema), mas **o Luís é Android**, por isso essa causa não se aplica
-diretamente a ele. **Falta investigar amanhã** a causa específica do
-comportamento no Android antes de propor correção — não assumir que é a
-mesma coisa. Hipóteses a verificar: falta de `"purpose":"maskable"` nos
-ícones do manifest, o conteúdo do próprio ícone ter um efeito suave/desfocado
-de propósito (ver a imagem antes de mexer), ou outra causa específica do
-ecrã de lançamento do Android/Chrome.
-
-### Outros achados de design ainda por implementar
-
-Todos os itens desta secção foram implementados em 27/09/2026 — ver
-"Já feito" mais abaixo (Fases 1-3).
-
 ### Críticas de design por fazer
 
 - **Lote 2**: Votação MVP, Perfil, Stats pessoal/época
 - **Lote 3**: Admin — abas Equipas, Jogadores, Gerir
-
-### Funcionalidades novas (ver `IDEIAS-CONCORRENCIA.md`)
-
-1. **Ecrã de novidades dentro da app** — ninguém sabe do "não vou", voto
-   secreto do MVP, lembrete da manhã, grupo de demonstração.
-2. **Apagar mensagens do chat** (moderação do admin) — hoje não há nada a
-   fazer se entrar spam num grupo.
-3. **Cor e nome por equipa** (configurável pelo admin) — resolve a confusão
-   de quem é dos coletes. Diferente da correção de cor já feita (essa só
-   tirou o azul/âmbar reservados; isto é deixar o admin escolher).
-4. **Estado "lesionado" no perfil** — evita lembretes semanais a quem está a
-   recuperar.
 
 ---
 
@@ -80,6 +43,37 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **27/09/2026:**
+- **Fase 4 (ícone Android + 4 funcionalidades novas) — ✅ FEITO.** Publicado
+  em `main` (commits `16732e0`, `49dd737`, `4d22711`, `552d830`, `5d38d4c`):
+  - **Ícone grande e desfocado no Android — encontrada a causa e corrigida.**
+    Os ícones do manifest eram opacos, com cantos a preto sólido colados à
+    borda, sem margem nenhuma. Sem uma versão "maskable" declarada, é o
+    próprio Chrome/Android que gera sozinho uma versão adaptativa —
+    esticando e desfocando o ícone normal para caber na forma do launcher.
+    Geradas `icon-192-maskable.png`/`icon-512-maskable.png` (logótipo
+    encolhido a 72%, centrado) e declaradas no manifest com
+    `purpose:"maskable"`.
+  - **Apagar mensagens do chat (moderação do admin)**: o botão "Apagar" já
+    existente (Fase 2) passa a aparecer também nas mensagens de outras
+    pessoas quando é o admin a ver o chat. De caminho, corrigido um bug
+    anterior: a política de DELETE só permitia a admins — ou seja, um
+    jogador comum a apagar a própria mensagem falhava sempre, silenciosamente,
+    desde a Fase 2. Adicionada política que falta para o próprio autor.
+  - **Ecrã de novidades dentro da app**: lista fixa no código (sem tabela
+    nova), com o mesmo padrão de ponto vermelho já usado no chat. Botão
+    "📣 Novidades" ao lado de Chat/Zona.
+  - **Cor e nome por equipa, configurável pelo admin**: em Admin > Gerir,
+    nome (ex: "Amarelos") e cor de cada equipa, a partir de uma paleta
+    segura de 6 cores sem conflito com as cores reservadas do sistema.
+    Fixo por grupo, não por jogo. Bónus: a Equipa A tinha o verde-sólido
+    como cor por omissão — a mesma cor reservada a "confirmar presença" —,
+    corrigido para vermelho mesmo em grupos que não personalizem nada.
+  - **Estado "lesionado"**: não é um modo permanente no perfil — é um
+    motivo do "não vou" só para aquele jogo. Link "🤕 Lesionado?" por baixo
+    do botão de recusa; aparece um "🤕" ao lado do nome na lista de quem
+    não vai, no admin.
+  - Por fazer a seguir: as duas rondas de crítica de design que faltam
+    (Lote 2 e Lote 3, ver acima).
 - **Chat: indicador de mensagem não lida — ✅ FEITO.** Guardado em
   `localStorage` (`chat_visto_<grupo>_<jogador>`), sem precisar de tabela
   nova: compara a hora da última mensagem com a última vez que o jogador
@@ -111,7 +105,7 @@ Registo condensado — detalhe completo nos relatórios em
     duplicar sempre o `PlayerView` e empurrar a gestão para depois do
     scroll.
   - Fase 4 (ícone Android desfocado, mais críticas de design, 4
-    funcionalidades novas) fica para depois — ver secções abaixo.
+    funcionalidades novas) feita a seguir — ver entrada própria acima.
 
 **26/09/2026:**
 - **Gráfico do mealheiro corrigido** — somava só jogos, ignorava pagamentos
