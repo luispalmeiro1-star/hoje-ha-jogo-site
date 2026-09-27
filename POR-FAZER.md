@@ -32,25 +32,8 @@ ecrã de lançamento do Android/Chrome.
 
 ### Outros achados de design ainda por implementar
 
-- **[P1] Jogador: carga vertical excessiva** antes da lista de presença
-  (6+ blocos condicionais) — recolher chat/zona/posição/equipas em
-  `ExpandableCard`s.
-- **[P1] Admin: confirmar a própria presença duplica o `PlayerView`**, empurra
-  as ferramentas de gestão para depois do scroll.
-- **[P1] Admin: Dívidas/Histórico (botões soltos) vs. Equipas/Jogadores/Gerir
-  (abas)** — dois sistemas de navegação para o mesmo conceito.
-- **[P1] Zona: sem validação do contacto WhatsApp** — número mal escrito só
-  se descobre quando alguém tenta contactar e falha.
-- **[P2] Simplificar o gráfico do mealheiro** para poucos pontos — lista
-  compacta "jogo → saldo" ou sparkline em vez de eixos+tooltip completos.
-- **[P2] Jogador: `MBWayButton` introduz ciano não documentado**, 5ª cor de
-  destaque simultânea — precisa de decisão: formalizar o ciano como "cor de
-  pagamento", ou usar um tom já existente no sistema?
-- **[P2] Zona: pode ficar "disponível" sem zona definida**; lista de 34
-  concelhos sem pesquisa nem ordem alfabética.
-- **[P2/P3 vários, baixa prioridade]**: Chat sem editar/apagar mensagem
-  própria; Equipas com alvos de toque pequenos; escritas na BD sem
-  tratamento de erro em Zona.
+Todos os itens desta secção foram implementados em 27/09/2026 — ver
+"Já feito" mais abaixo (Fases 1-3).
 
 ### Críticas de design por fazer
 
@@ -104,6 +87,31 @@ Registo condensado — detalhe completo nos relatórios em
   há mensagem nova de outra pessoa. Era o único achado funcional de todas as
   críticas de design — sem isto, ninguém sabia que havia mensagem nova a não
   ser abrindo o chat "por acaso". Publicado (commit `2f8b2cd`).
+- **Fases 1-3 (todos os "outros achados" pendentes) — ✅ FEITO.** Publicado
+  em `main` (commits `a665b3a`, `49116a3`, `ad840a7`, `b3f7079`):
+  - **Zona**: `toggleDay`/`handleZone`/`handleToggleAvailable`/`saveNotes`
+    passam a reverter o estado e avisar com toast se a escrita na BD falhar;
+    validação do contacto WhatsApp (mínimo 9 dígitos); já não dá para ficar
+    "disponível" sem escolher zona primeiro; lista de concelhos passa a ter
+    pesquisa e ordem alfabética.
+  - **Equipas**: botão de mover jogador de equipa com alvo de toque maior.
+  - **MBWay**: cor ciano não documentada trocada por roxo (já usado em
+    Equipa B/avatares), sem tocar no verde-sólido reservado a "confirmar".
+  - **Chat**: nova opção "Apagar" na própria mensagem (com confirmação),
+    com reversão e toast se a BD recusar.
+  - **Mealheiro**: com menos de 5 jogos mostra uma lista compacta
+    "jogo → saldo" em vez do gráfico de linha completo (uma linha entre
+    menos de 5 pontos não é tendência nenhuma).
+  - **Jogador**: "Posição" e "Equipas automáticas" passam a `ExpandableCard`,
+    reduzindo os blocos sempre visíveis antes da lista de presença.
+  - **Admin**: Dívidas/Histórico passam a usar o mesmo estilo de abas
+    (`.tabs`/`.tab`) que Jogo/Equipas/Jogadores/Gerir, acabando com os dois
+    sistemas de navegação diferentes; confirmar a própria presença
+    (banner + botões + posição) passa a `ExpandableCard`, deixando de
+    duplicar sempre o `PlayerView` e empurrar a gestão para depois do
+    scroll.
+  - Fase 4 (ícone Android desfocado, mais críticas de design, 4
+    funcionalidades novas) fica para depois — ver secções abaixo.
 
 **26/09/2026:**
 - **Gráfico do mealheiro corrigido** — somava só jogos, ignorava pagamentos
