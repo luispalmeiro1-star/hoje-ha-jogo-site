@@ -10,6 +10,26 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
+### Ícone grande e desfocado ao abrir a app pela primeira vez (reportado 27/09/2026)
+
+**O Luís (Android) reportou:** ao abrir a app a partir do ícone no ecrã
+principal, aparece o símbolo da app em grande, desfocado — antes do ecrã de
+arranque com o texto "HOJE HÁ JOGO" que já ajustámos (esse é texto, não é
+isto). É o ecrã de lançamento automático que o próprio telemóvel constrói a
+partir do ícone da app, não um ecrã nosso.
+
+**Investigação feita:** `vite.config.js` declara `icon-192.png` e
+`icon-512.png` para o manifest PWA (ambos com o tamanho real correto,
+confirmado por ficheiro). `index.html` só liga um `apple-touch-icon` de
+192px — isso explicaria o problema **no iOS** (ícone pequeno ampliado pelo
+sistema), mas **o Luís é Android**, por isso essa causa não se aplica
+diretamente a ele. **Falta investigar amanhã** a causa específica do
+comportamento no Android antes de propor correção — não assumir que é a
+mesma coisa. Hipóteses a verificar: falta de `"purpose":"maskable"` nos
+ícones do manifest, o conteúdo do próprio ícone ter um efeito suave/desfocado
+de propósito (ver a imagem antes de mexer), ou outra causa específica do
+ecrã de lançamento do Android/Chrome.
+
 ### Chat: indicador de mensagem não lida está morto (P0, funcional)
 
 **O único achado funcional de todas as críticas feitas até agora — não é só
