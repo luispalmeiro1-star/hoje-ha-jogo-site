@@ -30,15 +30,6 @@ mesma coisa. Hipóteses a verificar: falta de `"purpose":"maskable"` nos
 de propósito (ver a imagem antes de mexer), ou outra causa específica do
 ecrã de lançamento do Android/Chrome.
 
-### Chat: indicador de mensagem não lida está morto (P0, funcional)
-
-**O único achado funcional de todas as críticas feitas até agora — não é só
-visual.** As chamadas reais do `BottomNav` passam sempre `unreadChat={false}`,
-e o Chat nem é um dos 4 separadores do rodapé (é um botão dentro do ecrã de
-Jogo). Ninguém é avisado de mensagem nova a não ser que abra o chat "por
-acaso" — mina diretamente o propósito do chat como substituto do WhatsApp.
-Precisa de lógica nova (ex.: `last_read_at` por jogador), não só troca de cor.
-
 ### Outros achados de design ainda por implementar
 
 - **[P1] Jogador: carga vertical excessiva** antes da lista de presença
@@ -100,11 +91,21 @@ Precisa de lógica nova (ex.: `last_read_at` por jogador), não só troca de cor
 
 ---
 
-## Já feito (26/09/2026)
+## Já feito
 
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**27/09/2026:**
+- **Chat: indicador de mensagem não lida — ✅ FEITO.** Guardado em
+  `localStorage` (`chat_visto_<grupo>_<jogador>`), sem precisar de tabela
+  nova: compara a hora da última mensagem com a última vez que o jogador
+  abriu o chat. Ponto vermelho no botão "💬 Chat" (jogador e admin) quando
+  há mensagem nova de outra pessoa. Era o único achado funcional de todas as
+  críticas de design — sem isto, ninguém sabia que havia mensagem nova a não
+  ser abrindo o chat "por acaso". Publicado (commit `2f8b2cd`).
+
+**26/09/2026:**
 - **Gráfico do mealheiro corrigido** — somava só jogos, ignorava pagamentos
   avulsos; e usava a data errada (do jogo, não do pagamento). Como bónus,
   isto também resolveu sozinho o achado "duas fontes de verdade para o
