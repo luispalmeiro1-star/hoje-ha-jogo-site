@@ -10,10 +10,10 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-### Críticas de design por fazer
-
-- **Lote 2**: Votação MVP, Perfil, Stats pessoal/época
-- **Lote 3**: Admin — abas Equipas, Jogadores, Gerir
+Nada pendente de momento — ver "Prioridade seguinte" nos relatórios em
+`.impeccable/critique/` para itens de polish menor deixados fora de escopo
+(dividir a secção "Configurações" do admin; ordenar/agrupar melhor a lista
+de votação MVP; texto abaixo de 11px espalhado pelos gráficos de stats).
 
 ---
 
@@ -74,6 +74,26 @@ Registo condensado — detalhe completo nos relatórios em
     não vai, no admin.
   - Por fazer a seguir: as duas rondas de crítica de design que faltam
     (Lote 2 e Lote 3, ver acima).
+- **Críticas de design Lote 2 e Lote 3 — ✅ FEITO.** Relatórios em
+  `.impeccable/critique/`, correções publicadas em `main` (commits `51f00ae`
+  Lote 2, `6036f53` Lote 3):
+  - **Lote 2 (MVP/Perfil/Stats)**: `updateProfile` e upload de avatar
+    passam a verificar erro e reverter em vez de mostrar sempre sucesso;
+    Stats deixa de usar dourado como cor de estado (era usado em 4 sítios
+    diferentes) e o Perfil deixa de ter 4 elementos dourados ao mesmo
+    tempo; verde-sólido e azul-guarda-redes deixam de ser cor decorativa
+    nos gráficos; "Trocar de conta" passa a pedir confirmação; Perfil
+    ganha 3 cabeçalhos de secção; alvos de toque maiores; lista de
+    votação MVP ordenada por nome.
+  - **Lote 3 (Admin: Equipas/Jogadores/Gerir)**: alternar a presença de
+    outro jogador e remover jogador passam a pedir confirmação (antes
+    nenhum dos dois pedia, ao contrário de todas as outras ações
+    destrutivas da app); guardar definições e o número MBWay passam a
+    avisar se a gravação falhar; banner de "equipa vencedora" deixa de
+    usar azul-guarda-redes (cor errada, inconsistente com a mesma ação
+    na aba Equipas); verde-sólido deixa de ser a cor de "selecionado" em
+    4 grupos de botões; já não podem aparecer 3 cartões dourados ao
+    mesmo tempo na aba Gerir; campos sem etiqueta visível corrigidos.
 - **Chat: indicador de mensagem não lida — ✅ FEITO.** Guardado em
   `localStorage` (`chat_visto_<grupo>_<jogador>`), sem precisar de tabela
   nova: compara a hora da última mensagem com a última vez que o jogador
