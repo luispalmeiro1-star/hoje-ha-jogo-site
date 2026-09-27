@@ -28,20 +28,18 @@ Precisa de lógica nova (ex.: `last_read_at` por jogador), não só troca de cor
   as ferramentas de gestão para depois do scroll.
 - **[P1] Admin: Dívidas/Histórico (botões soltos) vs. Equipas/Jogadores/Gerir
   (abas)** — dois sistemas de navegação para o mesmo conceito.
-- **[P1] `PiggyBankCard` muda de paleta consoante quem o chama** (hero vs.
-  compacto) — unificar; se precisar de diferença, que seja de tamanho.
 - **[P1] Zona: sem validação do contacto WhatsApp** — número mal escrito só
   se descobre quando alguém tenta contactar e falha.
 - **[P2] Simplificar o gráfico do mealheiro** para poucos pontos — lista
   compacta "jogo → saldo" ou sparkline em vez de eixos+tooltip completos.
 - **[P2] Jogador: `MBWayButton` introduz ciano não documentado**, 5ª cor de
-  destaque simultânea.
+  destaque simultânea — precisa de decisão: formalizar o ciano como "cor de
+  pagamento", ou usar um tom já existente no sistema?
 - **[P2] Zona: pode ficar "disponível" sem zona definida**; lista de 34
   concelhos sem pesquisa nem ordem alfabética.
 - **[P2/P3 vários, baixa prioridade]**: Chat sem editar/apagar mensagem
-  própria; landing (fallback SEO) sem tokens tipográficos e bullets nativos;
-  botões sem feedback otimista/estado desabilitado em vários sítios; Equipas
-  com alvos de toque pequenos; escritas na BD sem tratamento de erro em Zona.
+  própria; Equipas com alvos de toque pequenos; escritas na BD sem
+  tratamento de erro em Zona.
 
 ### Críticas de design por fazer
 
@@ -105,6 +103,11 @@ Registo condensado — detalhe completo nos relatórios em
   voto MVP: verificar erro, reverter, avisar).
 - **Admin: aviso "faltam guarda-redes"** já não fica escondido atrás de
   "lotação quase completa".
+- **`PiggyBankCard` "duas paletas" — resolvido de graça**: quando o cartão
+  hero passou a verde (ver acima), ficou com as mesmas cores do compacto.
+- **Chat: botão de enviar** fica visualmente desabilitado com o campo vazio.
+- **Landing (fallback `index.html`)**: listas "O que faz"/"Como funciona"
+  deixam de usar bullets/numeração nativos do browser.
 - **Landing (página real, `LandingView`) reformulada**: CTA sobe para antes
   do mockup (hipótese principal para a conversão a frio ser zero); linha
   "Sem instalar"; funcionalidades como benefícios em vez de nomes; prova
