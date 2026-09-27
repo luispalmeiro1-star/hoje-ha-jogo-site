@@ -10,9 +10,49 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-Nada pendente — todos os achados das críticas de design (`.impeccable/critique/`)
-estão feitos, incluindo os itens de polish menor que tinham ficado de fora
-das primeiras rondas.
+Nada urgente. Fica registado abaixo um levantamento (27/09/2026) de todos os
+outros comandos do `/impeccable` — dois achados por comando — para quando
+houver vontade de continuar a polir a app. Os concretos e de baixo risco já
+foram aplicados (ver "Já feito"); os que ficam aqui exigem uma decisão ou
+mais trabalho do que valia a pena fazer sem confirmar primeiro.
+
+### `harden` (produção a sério)
+- `resetGame` (fecho do jogo) faz uma dúzia de escritas seguidas na BD sem
+  transação — se a rede cair a meio, fica em estado inconsistente.
+- Vários carregamentos de dados (`loadHistory`, `loadDebts`, `loadMessages`,
+  `loadAttendance`) ignoram erro da leitura — falha silenciosamente,
+  deixando os dados desatualizados até à próxima tentativa. Risco menor que
+  os erros de escrita já todos corrigidos, por isso não mexi.
+
+### `optimize` (performance)
+- O ficheiro final da app já passa de 1MB comprimido (o próprio `vite
+  build` avisa) — para quem tem dados móveis fracos, é tempo de espera a
+  mais no arranque.
+- A biblioteca de gráficos (Recharts) carrega sempre, mesmo para quem nunca
+  abre "Stats" — dava para só carregar quando é preciso. Não fiz por ser
+  uma alteração de risco a mais para o benefício, sem poder testar ao vivo.
+
+### `adapt` (ecrãs diferentes)
+- A app é só telemóvel por desenho (documentado no `DESIGN.md`) — nada a
+  mudar aí.
+- Não testei em telemóveis muito antigos/pequenos (320px) — o título da
+  landing foi medido para 360px; abaixo disso pode partir a linha de forma
+  menos elegante. Precisava de um ecrã real para confirmar.
+
+### `distill` (reduzir ao essencial)
+- Nada a cortar a nível visual — a app já é densa por desenho, documentado.
+- O Perfil, mesmo depois de dividido em secções, ainda mistura conta/grupo
+  com suporte/redes sociais na mesma página — dava para separar.
+
+### `colorize`, `quieter`, `delight`
+- Nada urgente em nenhum dos três: a app já usa cor com intenção, já é
+  contida por desenho, e já tem alguns toques de celebração (ex: aviso
+  quando alguém entra por vaga aberta).
+
+### `overdrive`
+- Não recomendado para esta app — o sistema é deliberadamente contido (uma
+  cor rara, sem sombras decorativas, densidade controlada); "ultrapassar
+  limites convencionais" iria contra a própria identidade do `DESIGN.md`.
 
 ---
 
@@ -42,6 +82,24 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **27/09/2026 (continuação):**
+- **Levantamento com os restantes comandos `/impeccable` — ✅ FEITO.**
+  Publicado em `main` (commit `5e57968`). Corrido `/impeccable onboard`
+  (primeira experiência) e `/impeccable bolder` (landing), mais um
+  levantamento de 2 achados por cada um dos restantes comandos (ver "Por
+  fazer agora" acima para os que ficaram só registados). Aplicado:
+  - **bolder** (landing, Funcionalidades): 6 etiquetas em texto cinzento
+    genérico a 9.5px passam a usar a Bebas Neue (a tipografia que o resto
+    da app reserva ao que importa), maiores e a branco.
+  - **animate**: o número de "CONFIRMADOS" no cabeçalho do jogo já sobe
+    do valor antigo para o novo em vez de saltar — como o mockup animado
+    da landing já fazia.
+  - **clarify**: botão de gravar (Gerir) já não mostra "SEM ALTERAÇÕES"
+    (lia-se como aviso) — passa a "TUDO GUARDADO".
+  - **onboard**: revisto "criar grupo" e "entrar por convite" (já muito
+    bem pensados, nada a mudar); identificado que um grupo novo sem
+    ninguém confirmado não mostra nenhum incentivo, e que o tutorial do
+    admin tem 10 passos (mais do que os 3-7 recomendados) — nenhum dos
+    dois corrigido ainda, ficam para decisão do Luís.
 - **Últimos itens de polish das críticas — ✅ FEITO.** Publicado em `main`
   (commits `5e0eaf5`, `f625ed0`):
   - Votação MVP ordenada por votos; nota a dizer que o voto é secreto.
