@@ -10,12 +10,7 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-- **Trocar os `window.confirm()` nativos por um modal próprio da app**
-  (30/09/2026, pedido do Luís — "um bocadinho arcaico"). A caixa cinzenta
-  do browser não segue as cores/tipografia do sistema. Usada em várias
-  confirmações espalhadas pela app (lesão, remover jogador, alternar
-  presença de outra pessoa, etc.) — trocar todas de uma vez por um
-  componente de modal consistente com o `DESIGN.md`. Não é urgente.
+Nada.
 
 ---
 
@@ -43,6 +38,23 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
+
+**30/09/2026:**
+- **Confirmação de "lesionado" antes de mudar o estado — ✅ FEITO.**
+  Publicado em `main` (commit `5b9bff7`), a pedido de um jogador: clicar
+  em "lesionado" mudava logo para "não vou", e quem estivesse "in" e
+  clicasse sem querer perdia logo o lugar (ia para fora, com risco de dar
+  o lugar a quem estivesse em espera). Os 4 botões (jogador e admin, ecrã
+  de confirmar e ecrã de já respondido) passam a pedir confirmação antes.
+- **`window.confirm()` nativo trocado por modal próprio — ✅ FEITO.**
+  Publicado em `main` (commit `8a553c0`), a pedido do Luís ("um
+  bocadinho arcaico"). Criado `askConfirm()`/`ConfirmModal`, ligados uma
+  vez em `App()` por um pequeno singleton de módulo — sem precisar de
+  passar a função por todos os componentes que já pediam confirmação.
+  As 10 confirmações existentes (lesão, apagar mensagem, trocar de
+  conta, alternar presença de outro jogador, remover jogador, sair do
+  grupo, apagar grupo) passam a usar o modal da app, com vermelho nas
+  ações destrutivas e verde nas neutras.
 
 **27/09/2026 (continuação, 2ª ronda):**
 - **Os dois achados do `onboard` — ✅ FEITO.** Publicado em `main` (commit
