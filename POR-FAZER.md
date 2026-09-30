@@ -10,8 +10,12 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-Nada. Levantamento completo feito (ver "Já feito") — o que valia a pena e
-era seguro fazer já está feito; o resto foi decidido que não se faz.
+- **Trocar os `window.confirm()` nativos por um modal próprio da app**
+  (30/09/2026, pedido do Luís — "um bocadinho arcaico"). A caixa cinzenta
+  do browser não segue as cores/tipografia do sistema. Usada em várias
+  confirmações espalhadas pela app (lesão, remover jogador, alternar
+  presença de outra pessoa, etc.) — trocar todas de uma vez por um
+  componente de modal consistente com o `DESIGN.md`. Não é urgente.
 
 ---
 
