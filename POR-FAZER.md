@@ -40,6 +40,14 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **30/09/2026:**
+- **Botões de presença simplificados + lesão movida para dentro do "não
+  vou" — ✅ FEITO.** Publicado em `main` (commit `791821c`), a pedido do
+  Luís. Os 3 textos diferentes para a mesma ação ("VOU JOGAR"/"JÁ NÃO
+  VOU"/"AFINAL VOU") passam a ser sempre "VOU"/"NÃO VOU" (jogador, admin
+  e demonstração). O link "Foi lesão? Marca aqui", que ficava sempre
+  visível, deixa de existir à parte: agora, ao clicar em "NÃO VOU",
+  aparece uma escolha (`ChoiceModal`, novo, ao lado do `ConfirmModal` de
+  ontem) a perguntar o motivo — "Não vou" ou "Foi lesão".
 - **Confirmação de "lesionado" antes de mudar o estado — ✅ FEITO.**
   Publicado em `main` (commit `5b9bff7`), a pedido de um jogador: clicar
   em "lesionado" mudava logo para "não vou", e quem estivesse "in" e
