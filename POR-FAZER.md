@@ -39,6 +39,18 @@ Nada.
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**01/10/2026:**
+- **"POR JOGO" errado no histórico — ✅ FEITO.** Publicado em `main`
+  (commit `8453967`), reportado pelo Luís: o jogo de 23/09 mostrava "2€"
+  quando sempre custou 3€ a cada um. Causa: o valor era calculado como
+  `recolhido ÷ jogadores`, que só dá o custo certo se toda a gente já
+  tiver pago — naquele jogo só 7 de 11 tinham pago, 21€/11≈2. Passa a
+  gravar o custo real (`cost_per_player`) no fecho do jogo, tanto no
+  fecho manual (`App.jsx`) como no automático (edge function
+  `close-finished-games`, redeployada em separado). Migração aplicada à
+  BD: nova coluna `game_history.cost_per_player`, histórico existente
+  preenchido com o custo atual de cada grupo (não varia por jogo).
+
 **30/09/2026:**
 - **Botões de presença simplificados + lesão movida para dentro do "não
   vou" — ✅ FEITO.** Publicado em `main` (commit `791821c`), a pedido do
