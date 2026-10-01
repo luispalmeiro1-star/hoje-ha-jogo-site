@@ -40,6 +40,21 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **01/10/2026:**
+- **"RECOLHIDO" não atualizava quando uma dívida era paga depois do jogo
+  fechar — ✅ FEITO.** Publicado em `main` (commit `8b1c95f`), a pedido
+  do Luís (apanhado ao investigar o achado do "POR JOGO" acima: 12
+  jogadores a 3€ deviam dar 36€, mas o jogo de 30/09 só mostrava 30€).
+  Causa: pagar uma dívida criava sempre uma entrada solta no histórico,
+  datada do jogo seguinte em vez do jogo de onde a dívida veio — por
+  isso o cartão do jogo original nunca via esse dinheiro, mesmo depois
+  de entrar. `payDebt` passa a ler a data do jogo a partir da descrição
+  da dívida ("Jogo de AAAA-MM-DD") e a somar ao `collected` desse jogo
+  específico. Dados do grupo do Luís corrigidos à mão (reconstituída a
+  atribuição certa pelas datas e pelo facto de só restar uma dívida
+  aberta hoje) — total do mealheiro não mudou, só ficou bem distribuído
+  por jogo. Não corrigido para outros grupos (risco de atribuição errada
+  sem a mesma certeza que havia aqui); só o código novo, que já aplica a
+  todos a partir de agora.
 - **"POR JOGO" errado no histórico — ✅ FEITO.** Publicado em `main`
   (commit `8453967`), reportado pelo Luís: o jogo de 23/09 mostrava "2€"
   quando sempre custou 3€ a cada um. Causa: o valor era calculado como
