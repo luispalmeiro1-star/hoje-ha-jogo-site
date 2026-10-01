@@ -40,6 +40,16 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **01/10/2026:**
+- **Cartão visual para partilhar o resumo do jogo — ✅ FEITO.** Publicado
+  em `main` (commit `430cad8`), a pedido do Luís — achava a mensagem de
+  texto "fraca" para partilhar. Passa a gerar uma imagem (1080x1080,
+  canvas) com o resultado, a cor e o nome reais da equipa vencedora (já
+  configuráveis pelo admin) e o MVP; conteúdo sempre centrado mesmo
+  quando falta vencedor ou MVP, testado visualmente com nomes longos.
+  Usa a Web Share API com ficheiro quando o browser suporta; sem isso,
+  descarrega o PNG. Se a imagem falhar por algum motivo, cai de volta no
+  texto antigo. Tirado de propósito o saldo do mealheiro da partilha —
+  é informação financeira interna, sem razão para sair do grupo.
 - **"RECOLHIDO" não atualizava quando uma dívida era paga depois do jogo
   fechar — ✅ FEITO.** Publicado em `main` (commit `8b1c95f`), a pedido
   do Luís (apanhado ao investigar o achado do "POR JOGO" acima: 12
