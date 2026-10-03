@@ -10,7 +10,22 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-Nada.
+- **Migração da BD bloqueada à espera de autorização (03/10/2026).** Dois
+  achados dos avisos automáticos do Supabase, pedidos pelo Luís para
+  avançar: 3 índices em falta (`chat_messages.player_id`,
+  `debts.player_id`, `mvp_votes.voted_for_id`) e 2 tabelas com políticas
+  de segurança duplicadas na mesma ação (`chat_messages`, `mvp_votes` —
+  DELETE avaliado duas vezes). SQL já escrito e testado mentalmente
+  (li as políticas exatas antes de as fundir, para não mudar
+  comportamento). A ferramenta `apply_migration` pede autorização e,
+  três tentativas depois, continua bloqueada — precisa que o Luís a
+  aprove na interface, ou que me diga para tentar de outra forma.
+- **Achados do `/impeccable` ainda por decidir (02/10/2026)**, ver relatório
+  completo no histórico de chat: separar "sugestões" de "reportar
+  problema" (funcionalidade nova); botão de apagar/remover mais chamativo
+  que "Cancelar" nos modais novos; modais sem atalhos de teclado (Esc,
+  foco); "NÃO VOU" agora custa sempre 2 toques, mesmo sem ser lesão;
+  cartão de partilha sem pré-visualização antes de enviar.
 
 ---
 
@@ -38,6 +53,15 @@ Nada.
 
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
+
+**03/10/2026:**
+- **Ecrã de Novidades atualizado — ✅ FEITO.** Publicado em `main` (commit
+  `2c46013`). Achado ao procurar novas melhorias por pedido do Luís: a
+  lista estava parada em 27/09 e faltavam 4 coisas já em produção — cor/
+  nome por equipa, estado "lesionado", botões de presença simplificados
+  e o cartão visual de partilha. Mesmo problema já identificado no
+  `IDEIAS-CONCORRENCIA.md` ("lançámos funcionalidades sem que um único
+  utilizador soubesse").
 
 **01/10/2026:**
 - **Cartão visual para partilhar o resumo do jogo — ✅ FEITO.** Publicado
