@@ -26,14 +26,16 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   que "Cancelar" nos modais novos; modais sem atalhos de teclado (Esc,
   foco); "NÃO VOU" agora custa sempre 2 toques, mesmo sem ser lesão;
   cartão de partilha sem pré-visualização antes de enviar.
-- **Achados da crítica geral de 04/10/2026, não implementados nesta
-  ronda** (ver relatório completo no histórico de chat): sem atalhos de
-  teclado/`Esc` nos modais; sem ações em lote no admin (marcar várias
-  dívidas como recebidas de uma vez); 3 barras de progresso a animar
-  `width` em vez de `transform` (jank leve, baixo impacto visual —
-  encontrado pelo detetor automático do `/impeccable`, não corrigido por
-  ser baixo risco/baixo ganho); pills "✓ confirmados" no topo do ecrã
-  "Jogo" repetem informação que o acordeão logo abaixo também mostra.
+- **Achados ainda por decidir, depois das duas rondas de 04/10/2026**:
+  separar "sugestões" de "reportar problema" (funcionalidade nova, maior
+  esforço — decisão de produto, não só de UI); ações em lote no admin
+  (marcar várias dívidas como recebidas de uma vez — baixo valor agora,
+  o grupo do Luís só costuma ter 0-1 dívida aberta de cada vez); pills
+  "✓ confirmados" no topo do ecrã "Jogo" repetem informação que o
+  acordeão logo abaixo também mostra (mudança de layout com mais risco,
+  deixada de fora por cautela); 2 dots do onboarding ainda animam
+  `width` em vez de `transform` (baixíssimo impacto, uma única vez por
+  pessoa, não vale o risco de alterar o alinhamento dos pontos).
 
 ---
 
@@ -62,7 +64,24 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
-**04/10/2026:**
+**04/10/2026 (2ª ronda):**
+- **Mais 3 melhorias de UX — ✅ FEITO.** Publicado em `main` (commit
+  `9f9df07`), a pedido do Luís ("se tens mais sugestões, aplica").
+  Continuação da lista de achados da crítica geral:
+  - **Atalhos de teclado nos modais.** `Esc` fecha qualquer `ConfirmModal`
+    ou `ChoiceModal`, e o botão seguro recebe foco automático (o
+    "Cancelar" num aviso perigoso, o "Confirmar" num normal) — antes só
+    dava para usar por toque.
+  - **Pré-visualização do cartão antes de partilhar.** O botão "Partilhar
+    cartão" no Histórico mostra agora a imagem antes de abrir a partilha
+    do telemóvel ou descarregar, com "Cancelar"/"Partilhar" — protege
+    contra enviar para o grupo um cartão com algo mal renderizado.
+  - **Barras de progresso mais leves.** As duas barras "Confirmados"
+    animavam a propriedade `width` (obriga o browser a recalcular
+    layout a cada frame); passam a animar `transform`, mais barato,
+    sem mudar o aspeto visual.
+
+**04/10/2026 (1ª ronda):**
 - **Crítica geral à app com `/impeccable` (17 ecrãs reais) — ✅ FEITO.**
   Publicado em `main` (commit `61baebe`), a pedido do Luís ("mude o que
   mudar, custe o que custar"). Revisão a partir de capturas de ecrã reais
