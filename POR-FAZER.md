@@ -64,6 +64,21 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**04/10/2026 (3ª ronda — visão de jogador):**
+- **Dívida antiga deixava de ser só do admin — ✅ FEITO.** Publicado em
+  `main` (commit `88a5a1c`). O Luís pediu para ver a app como jogador;
+  criámos uma conta de teste (`contateste`, grupo 37, fica disponível
+  para o futuro) e ele mandou screenshots reais. Achado: a "Lista do
+  jogo", visível a qualquer jogador (não só ao admin), mostrava "⚠️ deve
+  Xâ‚¬" junto do nome de quem tinha uma dívida de um jogo anterior, ao
+  lado do "Deve 3€" genérico que toda a gente tem até pagar o jogo novo
+  — fazia parecer que a pessoa devia a dobrar, exposto ao grupo inteiro,
+  por algo que já tem o seu próprio ecrã só para o admin ("Dívidas").
+  Esse aviso passa a aparecer só na vista de admin.
+  Procurei mais problemas nos ecrãs de jogador (onboarding, confirmar
+  presença, posição, convidar alguém, chat) e não encontrei outros com
+  risco baixo e ganho claro que valessem gastar mais créditos agora.
+
 **04/10/2026 (2ª ronda):**
 - **Mais 3 melhorias de UX — ✅ FEITO.** Publicado em `main` (commit
   `9f9df07`), a pedido do Luís ("se tens mais sugestões, aplica").
