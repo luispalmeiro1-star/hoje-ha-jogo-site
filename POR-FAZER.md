@@ -26,6 +26,14 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   que "Cancelar" nos modais novos; modais sem atalhos de teclado (Esc,
   foco); "NÃO VOU" agora custa sempre 2 toques, mesmo sem ser lesão;
   cartão de partilha sem pré-visualização antes de enviar.
+- **Achados da crítica geral de 04/10/2026, não implementados nesta
+  ronda** (ver relatório completo no histórico de chat): sem atalhos de
+  teclado/`Esc` nos modais; sem ações em lote no admin (marcar várias
+  dívidas como recebidas de uma vez); 3 barras de progresso a animar
+  `width` em vez de `transform` (jank leve, baixo impacto visual —
+  encontrado pelo detetor automático do `/impeccable`, não corrigido por
+  ser baixo risco/baixo ganho); pills "✓ confirmados" no topo do ecrã
+  "Jogo" repetem informação que o acordeão logo abaixo também mostra.
 
 ---
 
@@ -53,6 +61,35 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
+
+**04/10/2026:**
+- **Crítica geral à app com `/impeccable` (17 ecrãs reais) — ✅ FEITO.**
+  Publicado em `main` (commit `61baebe`), a pedido do Luís ("mude o que
+  mudar, custe o que custar"). Revisão a partir de capturas de ecrã reais
+  enviadas pelo Luís em vez de abrir a app ao vivo — poupou os passos de
+  navegar ecrã a ecrã. Três correções implementadas:
+  - **Ícone da PWA trocado.** O ícone usado no ecrã de arranque e no
+    atalho do telemóvel era uma versão antiga da marca (azul-marinho,
+    tipografia diferente) e tinha uma moldura branca cosida na própria
+    imagem — causa provável do "ícone esticado e desfocado" que o
+    Android mostra ao instalar (o comentário já existia no
+    `vite.config.js`). Novo ícone gerado por código (canvas + captura),
+    seguindo a identidade "marcador do pavilhão" do `DESIGN.md`
+    (preto-esverdeado, dourado raro) e sem moldura própria, para o
+    Android aplicar a máscara adaptativa sem distorcer.
+  - **"Em dívida" deixou de parecer um botão.** Tinha a mesma forma de
+    pílula do botão "Recebido" ao lado, sem ser clicável — texto simples
+    tira a ambiguidade.
+  - **Ecrã vazio de "Épocas" ganhou contexto.** Era só "Nenhuma época
+    anterior registada" em cinzento; passa a explicar que o resumo
+    aparece quando uma época terminar.
+
+  Dois achados verificados e descartados por serem falsos positivos da
+  leitura só por imagem (o código já tinha a confirmação correta):
+  apagar mensagem no chat e remover jogador já pedem confirmação via
+  `askConfirm`. Restantes achados (atalhos de teclado nos modais, ações
+  em lote, pills repetidas no ecrã "Jogo", animações de `width`) ficaram
+  por decidir — ver "Por fazer agora".
 
 **03/10/2026:**
 - **Ecrã de Novidades atualizado — ✅ FEITO.** Publicado em `main` (commit
