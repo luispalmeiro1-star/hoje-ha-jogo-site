@@ -64,6 +64,28 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**04/10/2026 (4ª ronda — `/code-review`):**
+- **2 bugs reais corrigidos nas mudanças desta sessão — ✅ FEITO.**
+  Publicado em `main` (commit `c746038`). O Luís pediu uma revisão de
+  código; corri o `/code-review` (esforço médio) contra o diff das 3
+  rondas anteriores (ícone, modais, cartão, correção da dívida) em vez
+  de auditar o ficheiro inteiro de 6000+ linhas.
+  - **Modais roubavam o foco de volta.** O `useEffect` que dava foco
+    automático ao botão seguro dependia de `onCancel`, uma função nova
+    a cada render do componente principal — e a app volta a renderizar
+    com frequência (subscrições em tempo real: alguém confirma, paga,
+    manda mensagem). Resultado: se alguém navegasse com Tab para o
+    outro botão, o foco podia voltar a saltar para o botão errado antes
+    de a pessoa carregar Enter. Corrigido separando o foco inicial (só
+    corre uma vez) do atalho `Esc` (pode voltar a ligar-se sem
+    problema).
+  - **Partilha do cartão sem rede de segurança num caso.** Se a
+    partilha da imagem falhasse por um motivo que não fosse o
+    utilizador cancelar (ex: o telemóvel recusar o pedido), o botão
+    ficava sem fazer nada e sem avisar — a antiga rede de segurança
+    (cair para texto) só cobria falhas a gerar a imagem, não a
+    partilhá-la. Reposta.
+
 **04/10/2026 (3ª ronda — visão de jogador):**
 - **Dívida antiga deixava de ser só do admin — ✅ FEITO.** Publicado em
   `main` (commit `88a5a1c`). O Luís pediu para ver a app como jogador;
