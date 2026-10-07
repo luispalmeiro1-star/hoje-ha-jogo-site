@@ -66,13 +66,30 @@ Registo condensado — detalhe completo nos relatórios em
 
 **07/10/2026:**
 - **Admin pode trocar manualmente quem está dentro com quem está em
-  espera — ✅ FEITO.** Publicado em `main` (commit `8a8b1d1`), a pedido
-  do Luís depois de um caso real: um convidado ficou com o lugar antes
-  de um membro do grupo responder, e a promoção automática da fila só
-  segue ordem de chegada — não dava para escolher especificamente quem
-  entra. Novo botão 🔁 em "Jogadores", só nos jogadores em espera: abre
-  a lista de quem está dentro, o admin escolhe quem sai, e os dois
-  trocam de estado na hora.
+  espera — ✅ FEITO, com 2 correções no mesmo dia.** Publicado em
+  `main` (commit `8a8b1d1`), a pedido do Luís depois de um caso real:
+  um convidado ficou com o lugar antes de um membro do grupo
+  responder, e a promoção automática da fila só segue ordem de
+  chegada — não dava para escolher especificamente quem entra. Novo
+  botão 🔁 em "Jogadores", só nos jogadores em espera: abre a lista de
+  quem está dentro, o admin escolhe quem sai, e os dois trocam de
+  estado na hora.
+  - **Correção 1 (`98d5304`):** a lista de troca usava "membros com
+    conta" em vez de todos os jogadores — convidados nunca apareciam
+    como opção, exatamente o caso que a funcionalidade existia para
+    resolver.
+  - **Correção 2 (`395becd`), mais séria:** ao testar, o Luís reportou
+    que o convidado saía dos 12 mas o membro escolhido não entrava.
+    Causa real: as duas escritas corriam em paralelo (`Promise.all`).
+    Há um gatilho na base de dados que impede o grupo de passar do
+    limite de jogadores e, se alguém tentar entrar com o grupo cheio,
+    devolve "wait" em silêncio, sem erro — e como as duas pedidas
+    corriam ao mesmo tempo, a entrada por vezes era avaliada antes de
+    a saída ter sido gravada, via o lugar ainda ocupado, e recusava.
+    Confirmado nos dados reais (Diogo Campos e Miguel Reis ficaram os
+    dois "wait" com o mesmo `confirmed_at`). Agora é sequencial — sai
+    primeiro, confirmado, só depois entra — e confere que a entrada
+    pegou mesmo antes de dar como feito.
 
 **04/10/2026 (4ª ronda — `/code-review`):**
 - **2 bugs reais corrigidos nas mudanças desta sessão — ✅ FEITO.**
