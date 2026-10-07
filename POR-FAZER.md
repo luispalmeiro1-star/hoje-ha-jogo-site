@@ -66,7 +66,7 @@ Registo condensado — detalhe completo nos relatórios em
 
 **07/10/2026:**
 - **Admin pode trocar manualmente quem está dentro com quem está em
-  espera — ✅ FEITO, com 2 correções no mesmo dia.** Publicado em
+  espera — ✅ FEITO, com 3 correções no mesmo dia.** Publicado em
   `main` (commit `8a8b1d1`), a pedido do Luís depois de um caso real:
   um convidado ficou com o lugar antes de um membro do grupo
   responder, e a promoção automática da fila só segue ordem de
@@ -90,6 +90,13 @@ Registo condensado — detalhe completo nos relatórios em
     dois "wait" com o mesmo `confirmed_at`). Agora é sequencial — sai
     primeiro, confirmado, só depois entra — e confere que a entrada
     pegou mesmo antes de dar como feito.
+  - **Correção 3 (`e162ac8`):** o Luís pediu "o admin tem de conseguir
+    fazer isto tudo a todos" — convidados nunca apareciam na lista de
+    "Jogadores" (só membros com conta), por isso um convidado em
+    espera não tinha onde carregar no 🔁. Convidados entram agora na
+    mesma lista, com os mesmos botões de confirmar presença, trocar e
+    remover — só o botão de mudar password fica de fora, porque
+    convidados não têm conta.
 
 **04/10/2026 (4ª ronda — `/code-review`):**
 - **2 bugs reais corrigidos nas mudanças desta sessão — ✅ FEITO.**
