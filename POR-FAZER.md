@@ -64,6 +64,16 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**07/10/2026:**
+- **Admin pode trocar manualmente quem está dentro com quem está em
+  espera — ✅ FEITO.** Publicado em `main` (commit `8a8b1d1`), a pedido
+  do Luís depois de um caso real: um convidado ficou com o lugar antes
+  de um membro do grupo responder, e a promoção automática da fila só
+  segue ordem de chegada — não dava para escolher especificamente quem
+  entra. Novo botão 🔁 em "Jogadores", só nos jogadores em espera: abre
+  a lista de quem está dentro, o admin escolhe quem sai, e os dois
+  trocam de estado na hora.
+
 **04/10/2026 (4ª ronda — `/code-review`):**
 - **2 bugs reais corrigidos nas mudanças desta sessão — ✅ FEITO.**
   Publicado em `main` (commit `c746038`). O Luís pediu uma revisão de
