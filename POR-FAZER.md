@@ -64,6 +64,19 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**08/10/2026:**
+- **Aviso de ícone novo para quem já tem a app instalada.** O Luís
+  reportou que o ícone novo (trocado há dias) só aparece se a pessoa
+  desinstalar e reinstalar a app — Android e iOS não atualizam o ícone
+  do ecrã principal sozinhos, e isso não é algo que o código da app
+  consiga forçar. Em vez de esconder o aviso em "Novidades", a pedido
+  explícito do Luís ("algo que aparecesse logo de início"), passa a
+  aparecer um ecrã a cobrir tudo, logo que a app abre, só a quem já a
+  tem instalada no ecrã principal (nunca a quem usa só no browser),
+  a dizer para remover e voltar a adicionar. Aparece uma única vez por
+  telemóvel (guardado em `localStorage`, não na conta — o problema é
+  do aparelho, não da pessoa). Publicado em `main` (commit `26f93f2`).
+
 **07/10/2026:**
 - **Admin pode trocar manualmente quem está dentro com quem está em
   espera — ✅ FEITO, com 3 correções no mesmo dia.** Publicado em
