@@ -70,6 +70,13 @@ Registo condensado — detalhe completo nos relatórios em
   a dizer para remover e voltar a adicionar. Aparece uma única vez por
   telemóvel (guardado em `localStorage`, não na conta — o problema é
   do aparelho, não da pessoa). Publicado em `main` (commit `26f93f2`).
+  **Reescrito no mesmo dia** a pedido do Luís: "ícone" não convence
+  ninguém a desinstalar e reinstalar a app — passou a "NOVA
+  ATUALIZAÇÃO", a falar em "melhorias" em genérico, e a instrução
+  passou de "remove/adiciona ao ecrã principal" para "desinstala e
+  instala outra vez" (commits `78391ce`+`f115de8`, chave do
+  `localStorage` trocada para chegar também a quem já tinha visto a
+  versão antiga).
 - **Ronda de resolução dos achados pendentes das críticas de UX
   anteriores**, a pedido do Luís ("resolve tudo, custe o que custar"):
   - **"NÃO VOU" passa a 1 toque direto** (desde 30/09 custava sempre 2 —
