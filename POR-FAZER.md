@@ -48,6 +48,16 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+- **Procurar jogador por nome + listas por ordem alfabética.** Pedido do
+  Luís: às vezes procura alguém na lista de "Jogadores" do grupo ou nos
+  confirmados do jogo e não encontra. A lista de "Jogadores" (admin)
+  ganhou uma caixa de busca por nome (só aparece com mais de 5 pessoas,
+  para não ocupar espaço em grupos pequenos) e passou a ordenar por
+  nome; os confirmados no ecrã "Jogo" também passam a ordenar por nome.
+  A lista de espera não foi tocada — aí a ordem é a posição na fila,
+  que é informação, não arrumação. Publicado em `main` (commit
+  `a4c9964`).
+
 **08/10/2026:**
 - **Aviso de ícone novo para quem já tem a app instalada.** O Luís
   reportou que o ícone novo (trocado há dias) só aparece se a pessoa
