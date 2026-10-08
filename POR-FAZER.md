@@ -10,32 +10,16 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-- **Migração da BD bloqueada à espera de autorização (03/10/2026).** Dois
-  achados dos avisos automáticos do Supabase, pedidos pelo Luís para
-  avançar: 3 índices em falta (`chat_messages.player_id`,
-  `debts.player_id`, `mvp_votes.voted_for_id`) e 2 tabelas com políticas
-  de segurança duplicadas na mesma ação (`chat_messages`, `mvp_votes` —
-  DELETE avaliado duas vezes). SQL já escrito e testado mentalmente
-  (li as políticas exatas antes de as fundir, para não mudar
-  comportamento). A ferramenta `apply_migration` pede autorização e,
-  três tentativas depois, continua bloqueada — precisa que o Luís a
-  aprove na interface, ou que me diga para tentar de outra forma.
-- **Achados do `/impeccable` ainda por decidir (02/10/2026)**, ver relatório
-  completo no histórico de chat: separar "sugestões" de "reportar
-  problema" (funcionalidade nova); botão de apagar/remover mais chamativo
-  que "Cancelar" nos modais novos; modais sem atalhos de teclado (Esc,
-  foco); "NÃO VOU" agora custa sempre 2 toques, mesmo sem ser lesão;
-  cartão de partilha sem pré-visualização antes de enviar.
-- **Achados ainda por decidir, depois das duas rondas de 04/10/2026**:
-  separar "sugestões" de "reportar problema" (funcionalidade nova, maior
-  esforço — decisão de produto, não só de UI); ações em lote no admin
-  (marcar várias dívidas como recebidas de uma vez — baixo valor agora,
-  o grupo do Luís só costuma ter 0-1 dívida aberta de cada vez); pills
-  "✓ confirmados" no topo do ecrã "Jogo" repetem informação que o
-  acordeão logo abaixo também mostra (mudança de layout com mais risco,
-  deixada de fora por cautela); 2 dots do onboarding ainda animam
-  `width` em vez de `transform` (baixíssimo impacto, uma única vez por
-  pessoa, não vale o risco de alterar o alinhamento dos pontos).
+- **Migração da BD continua bloqueada à espera de aprovação na interface
+  (03/10, retomado em 08/10/2026).** Mesmos 2 achados de sempre: 3 índices
+  em falta (`chat_messages.player_id`, `debts.player_id`,
+  `mvp_votes.voted_for_id`) e 2 tabelas com políticas de segurança
+  duplicadas (`chat_messages`, `mvp_votes` — DELETE avaliado duas vezes).
+  SQL pronto. O Luís deu autorização total em 08/10, mas o bloqueio não é
+  de autorização minha — é um prompt de aprovação da ferramenta
+  `apply_migration` que só aparece na interface da sessão, não no chat.
+  Precisa que o Luís o aprove aí diretamente quando/se aparecer, ou avance
+  por outra via (ex: SQL Editor do painel do Supabase).
 
 ---
 
@@ -76,6 +60,32 @@ Registo condensado — detalhe completo nos relatórios em
   a dizer para remover e voltar a adicionar. Aparece uma única vez por
   telemóvel (guardado em `localStorage`, não na conta — o problema é
   do aparelho, não da pessoa). Publicado em `main` (commit `26f93f2`).
+- **Ronda de resolução dos achados pendentes das críticas de UX
+  anteriores**, a pedido do Luís ("resolve tudo, custe o que custar"):
+  - **"NÃO VOU" passa a 1 toque direto** (desde 30/09 custava sempre 2 —
+    abria uma pergunta sobre lesão mesmo para quem nunca foi lesionado).
+    Como é reversível (basta voltar a carregar em "VOU"), deixou de
+    perguntar antes de agir; quem foi lesão marca isso a seguir, com um
+    link pequeno "🤕 Foi lesão? Marcar" que só aparece quando ainda não
+    marcaste motivo.
+  - **"Reportar problema" separado de "sugestão"** no ecrã de Perfil →
+    Suporte: dois botões para escolher antes de escrever, texto do
+    campo ajusta-se ao que escolheste. Guardado com um prefixo na
+    mensagem (`[PROBLEMA]`/`[SUGESTÃO]`), sem precisar de mudar a BD.
+  - **Admin pode marcar de uma vez todas as dívidas em aberto de uma
+    pessoa** (antes era sempre uma a uma) — só aparece quando a pessoa
+    tem mais do que uma dívida.
+  - **Botão "ver lista" dos confirmados deixa de repetir o número** que
+    já está no pill ao lado, no topo do ecrã "Jogo".
+  - **2 pontos do onboarding passam a animar `transform` em vez de
+    `width`** (mais suave, mesmo efeito visual).
+  - Confirmados já feitos antes e fora desta lista, ao rever o código:
+    atalhos de teclado nos modais (Esc + foco automático) e
+    pré-visualização do cartão de partilha antes de enviar — já
+    estavam implementados, só não tinham sido marcados como feitos.
+  - Migração da BD (índices + políticas RLS) continua bloqueada — ver
+    "Por fazer agora" acima.
+  - Publicado em `main` (commit `9ac6706`).
 
 **07/10/2026:**
 - **Admin pode trocar manualmente quem está dentro com quem está em
