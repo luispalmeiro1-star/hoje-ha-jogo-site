@@ -15,6 +15,14 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   de risco (não é a conta principal do Luís), mas não dá para arranjá-las
   por SQL direto — há uma proteção da base de dados que só deixa mudar
   esse campo através da própria app. Sem urgência.
+- **Possível condição de corrida ao reatribuir equipas**, encontrada na
+  revisão de código de 09/10/2026 (`reassignAllTeams`, chamada a partir
+  de `togglePresence`/`removePlayer`/`removeGuest`/`updatePosition`/
+  `addGuest`): usa a lista de jogadores capturada antes do pedido à BD
+  em vez de a reler depois, e pode reverter uma mudança de outra pessoa
+  que tenha chegado por tempo real entretanto. É real, mas raro (precisa
+  de dois admins a mexer ao mesmo tempo) e arriscado de corrigir sem
+  testar a sério — fica por decidir, não corrigido ainda.
 
 ---
 
@@ -44,6 +52,27 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **09/10/2026:**
+- **4 bugs reais corrigidos numa revisão de código mais profunda**
+  (`/code-review`, pedido do Luís). Achados confirmados contra o código
+  à volta, não só apontados:
+  - **Routing admin/jogador errado no login e no restauro de sessão**,
+    em mais 3 pontos de entrada para além do "criar grupo" já corrigido
+    (login normal, restauro de sessão por grupo, login Google). Usavam
+    `players.is_admin` (campo global da conta) em vez de
+    `player_groups.is_admin` (por grupo) — quem é admin num grupo mas
+    só jogador noutro podia cair na vista errada.
+  - **Lista de espera deixou de estar ordenada por ordem de chegada** —
+    ficava pela ordem de id da base de dados, podendo mostrar "és o 1º
+    da fila" a quem entrou depois de outra pessoa.
+  - **Valor do MBWay inflado por convidados em espera**: contava
+    qualquer convidado convidado pela pessoa, mesmo os que não
+    entraram no jogo (ficaram em espera, não geram dívida nenhuma).
+  - **Pagamentos parciais de dívidas com resíduo de vírgula
+    flutuante** (ex: 10,1€-3,3€ gravava 6,799999999999999€ em vez de
+    6,8€) — arredondado a cêntimos.
+  - Um 5º achado (condição de corrida rara ao reatribuir equipas) ficou
+    só registado, não corrigido — ver "Por fazer agora".
+  - Publicado em `main` (commit `9efa271`).
 - **Grupos de teste limpos.** `DELETE` direto por SQL continuava
   bloqueado (mesmo prompt de aprovação da migração, que só aparece na
   interface da sessão, não no chat) — apagados pela própria app, a
