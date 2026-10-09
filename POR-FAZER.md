@@ -10,16 +10,17 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 
 ## Por fazer agora
 
-- **Migração da BD continua bloqueada à espera de aprovação na interface
-  (03/10, retomado em 08/10/2026).** Mesmos 2 achados de sempre: 3 índices
-  em falta (`chat_messages.player_id`, `debts.player_id`,
-  `mvp_votes.voted_for_id`) e 2 tabelas com políticas de segurança
-  duplicadas (`chat_messages`, `mvp_votes` — DELETE avaliado duas vezes).
-  SQL pronto. O Luís deu autorização total em 08/10, mas o bloqueio não é
-  de autorização minha — é um prompt de aprovação da ferramenta
-  `apply_migration` que só aparece na interface da sessão, não no chat.
-  Precisa que o Luís o aprove aí diretamente quando/se aparecer, ou avance
-  por outra via (ex: SQL Editor do painel do Supabase).
+- **Duas contas antigas (anteriores à correção de 09/10/2026) ficaram com
+  `players.is_admin=false` desatualizado.** Não são contas de teste nem
+  de risco (não é a conta principal do Luís), mas não dá para arranjá-las
+  por SQL direto — há uma proteção da base de dados que só deixa mudar
+  esse campo através da própria app. Sem urgência.
+- **Dados de teste por limpar**: 3 grupos descartáveis criados para testar
+  o botão "Lembrar" e a correção do bug de routing (`TESTE-botao-
+  lembrar-apagar`, `TESTE-fix-admin-view-apagar`, mais um) e uma dívida
+  de teste (6€) — isolados, sem efeito no grupo real, mas o `DELETE` na
+  base de dados tem estado a bloquear/expirar (possível trigger lento).
+  Tentar de novo quando houver tempo.
 
 ---
 
@@ -59,6 +60,35 @@ Registo condensado — detalhe completo nos relatórios em
   número guardado, abre direto na conversa certa, sem precisar de
   escolher o contacto à mão. Mesmo padrão já usado para enviar links
   de reposição de password. Publicado em `main` (commit `206b620`).
+- **Botão 🔔 de notificação ao lado do "Lembrar"**, a pedido do Luís:
+  além do WhatsApp, envia uma notificação push normal da app
+  diretamente a essa pessoa (reutiliza o sistema já usado para "novo
+  jogo"/"aviso de pagamento", agora dirigido a 1 pessoa). Não aparece
+  para convidados, que não têm conta. Testado ao vivo — "Notificação
+  enviada ✓". Publicado em `main` (commit `c160881`).
+- **Corrigido bug: criar grupo deixava a conta na vista errada ao
+  recarregar.** Encontrado por acaso ao testar o botão "Lembrar": o
+  código de "Criar grupo" grava `is_admin=true` na tabela
+  `player_groups` mas nunca atualizava a mesma coluna na tabela
+  `players` — e é esta segunda coluna que decide, no arranque seguinte
+  da app, se a pessoa vai para a vista de Admin ou de Jogador.
+  Resultado real: todo o admin que criasse um grupo pela primeira vez
+  ficava preso na vista de Jogador ao recarregar (passo normal do
+  próprio fluxo), sem acesso a Jogadores/Equipas/Dívidas/Gerir, sem
+  perceber porquê. Confirmado em duas contas reais na base de dados
+  com o mesmo sintoma. Testado ao vivo, criando um grupo do zero —
+  confirmado que fica logo em Admin. Publicado em `main` (commit
+  `1816564`). Duas contas antigas continuam com o sintoma — ver "Por
+  fazer agora" (não é a conta principal do Luís).
+- **Barras de separadores do Admin unificadas.** O ecrã de Admin tinha
+  duas barras de navegação partidas — "Dívidas"/"Histórico" lá em
+  cima, "Jogo"/"Equipas"/"Jogadores"/"Gerir" mais abaixo — com vários
+  cartões pelo meio a separá-las (convite, notificações, destaques,
+  aviso de equipa vencedora, estado do grupo). Fácil não perceber que
+  Dívidas/Histórico eram navegação como o resto. Passam a ser uma
+  única fila com as 6 secções, logo a seguir ao estado do grupo — só
+  arrumação, nenhuma lógica tocada. Publicado em `main` (commit
+  `b9ec580`).
 
 - **Procurar jogador por nome + listas por ordem alfabética.** Pedido do
   Luís: às vezes procura alguém na lista de "Jogadores" do grupo ou nos
