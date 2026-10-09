@@ -15,14 +15,6 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   de risco (não é a conta principal do Luís), mas não dá para arranjá-las
   por SQL direto — há uma proteção da base de dados que só deixa mudar
   esse campo através da própria app. Sem urgência.
-- **Possível condição de corrida ao reatribuir equipas**, encontrada na
-  revisão de código de 09/10/2026 (`reassignAllTeams`, chamada a partir
-  de `togglePresence`/`removePlayer`/`removeGuest`/`updatePosition`/
-  `addGuest`): usa a lista de jogadores capturada antes do pedido à BD
-  em vez de a reler depois, e pode reverter uma mudança de outra pessoa
-  que tenha chegado por tempo real entretanto. É real, mas raro (precisa
-  de dois admins a mexer ao mesmo tempo) e arriscado de corrigir sem
-  testar a sério — fica por decidir, não corrigido ainda.
 
 ---
 
@@ -70,9 +62,24 @@ Registo condensado — detalhe completo nos relatórios em
   - **Pagamentos parciais de dívidas com resíduo de vírgula
     flutuante** (ex: 10,1€-3,3€ gravava 6,799999999999999€ em vez de
     6,8€) — arredondado a cêntimos.
-  - Um 5º achado (condição de corrida rara ao reatribuir equipas) ficou
-    só registado, não corrigido — ver "Por fazer agora".
   - Publicado em `main` (commit `9efa271`).
+- **Corrigido também o 5º achado: condição de corrida ao reatribuir
+  equipas**, a pedido do Luís logo a seguir. `reassignAllTeams`
+  (chamada a partir de `togglePresence`/`swapPresence`/`addGuest`/
+  `removeGuest`/`removePlayer`/`updatePosition`) partia sempre da
+  variável `players` capturada no início de cada função — e, por o
+  React só aplicar `setPlayers` no render seguinte, essa variável já
+  vinha desatualizada mesmo em relação à própria atualização otimista
+  feita linhas acima, sem precisar sequer de dois admins ao mesmo
+  tempo. Se chegasse entretanto uma mudança de outra pessoa por tempo
+  real durante o pedido à BD, podia ser revertida em silêncio ao
+  reatribuir as equipas a seguir. Corrigido com um `playersRef`
+  atualizado de forma síncrona (não só a reboque do render) e usado
+  nos 6 pontos que alimentam `reassignAllTeams`. Não elimina por
+  completo uma corrida entre dois admins no mesmo milissegundo (isso
+  precisava de lógica do lado do servidor), mas corrige o caso que
+  acontecia sempre, não só em condições raras. Publicado em `main`
+  (commit `675685b`).
 - **Grupos de teste limpos.** `DELETE` direto por SQL continuava
   bloqueado (mesmo prompt de aprovação da migração, que só aparece na
   interface da sessão, não no chat) — apagados pela própria app, a
