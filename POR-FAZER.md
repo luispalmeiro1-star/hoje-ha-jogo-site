@@ -15,12 +15,6 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   de risco (não é a conta principal do Luís), mas não dá para arranjá-las
   por SQL direto — há uma proteção da base de dados que só deixa mudar
   esse campo através da própria app. Sem urgência.
-- **Dados de teste por limpar**: 3 grupos descartáveis criados para testar
-  o botão "Lembrar" e a correção do bug de routing (`TESTE-botao-
-  lembrar-apagar`, `TESTE-fix-admin-view-apagar`, mais um) e uma dívida
-  de teste (6€) — isolados, sem efeito no grupo real, mas o `DELETE` na
-  base de dados tem estado a bloquear/expirar (possível trigger lento).
-  Tentar de novo quando houver tempo.
 
 ---
 
@@ -50,6 +44,14 @@ Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
 **09/10/2026:**
+- **Grupos de teste limpos.** `DELETE` direto por SQL continuava
+  bloqueado (mesmo prompt de aprovação da migração, que só aparece na
+  interface da sessão, não no chat) — apagados pela própria app, a
+  usar o botão "🗑️ Apagar grupo" em Perfil → Os meus grupos → Gerir
+  grupo, como o Luís pediu. Confirmado na BD que `TESTE-botao-
+  lembrar-apagar` e `TESTE-fix-admin-view-apagar` deixaram de existir.
+  Ficaram só duas contas de login órfãs e inofensivas (sem grupo, sem
+  dados).
 - **"Lembrar quem deve", num toque, por WhatsApp.** Ideia nova do Luís:
   o admin via quem tinha dívida em aberto, mas continuava a ter de ir
   ao WhatsApp escrever "ainda não pagaste" à mão a cada pessoa — o
