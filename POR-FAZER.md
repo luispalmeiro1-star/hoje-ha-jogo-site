@@ -48,6 +48,18 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**09/10/2026:**
+- **"Lembrar quem deve", num toque, por WhatsApp.** Ideia nova do Luís:
+  o admin via quem tinha dívida em aberto, mas continuava a ter de ir
+  ao WhatsApp escrever "ainda não pagaste" à mão a cada pessoa — o
+  próprio trabalho de perseguir gente que a app existe para tirar de
+  cima do organizador. Novo botão "Lembrar" junto de cada pessoa em
+  Admin → Dívidas, que abre o WhatsApp já com a mensagem escrita
+  ("Olá! Só a lembrar que tens X€ em aberto..."); se a pessoa tiver
+  número guardado, abre direto na conversa certa, sem precisar de
+  escolher o contacto à mão. Mesmo padrão já usado para enviar links
+  de reposição de password. Publicado em `main` (commit `206b620`).
+
 - **Procurar jogador por nome + listas por ordem alfabética.** Pedido do
   Luís: às vezes procura alguém na lista de "Jogadores" do grupo ou nos
   confirmados do jogo e não encontra. A lista de "Jogadores" (admin)
