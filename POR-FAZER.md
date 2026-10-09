@@ -88,7 +88,11 @@ Registo condensado — detalhe completo nos relatórios em
   Dívidas/Histórico eram navegação como o resto. Passam a ser uma
   única fila com as 6 secções, logo a seguir ao estado do grupo — só
   arrumação, nenhuma lógica tocada. Publicado em `main` (commit
-  `b9ec580`).
+  `b9ec580`). **Reordenado no mesmo dia** a pedido do Luís ("não
+  fazem muito sentido"): a ordem passou de Dívidas/Histórico/Jogo/
+  Equipas/Jogadores/Gerir para Jogo/Equipas/Jogadores (o que se
+  consulta toda a semana) primeiro, Dívidas/Histórico/Gerir (gestão,
+  mais esporádico) depois (commit `8454c6e`).
 
 - **Procurar jogador por nome + listas por ordem alfabética.** Pedido do
   Luís: às vezes procura alguém na lista de "Jogadores" do grupo ou nos
