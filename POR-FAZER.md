@@ -43,6 +43,16 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**11/10/2026:**
+- **Adicionar o jogo ao calendário do telemóvel.** Ideia nova do Luís:
+  o dia/hora do jogo só existia dentro da app, era preciso criar o
+  lembrete no calendário à mão. Novo botão "Adicionar ao calendário"
+  no cartão "Próximo jogo" (visível a jogadores e admin, por estar no
+  `FieldHeader` partilhado) gera um ficheiro `.ics` local, sem pedir
+  nada ao servidor, com data, hora (3h30 de duração) e local — abre
+  direto no calendário por omissão do telemóvel. Publicado em `main`
+  (commit `2ba2e53`).
+
 **09/10/2026:**
 - **4 bugs reais corrigidos numa revisão de código mais profunda**
   (`/code-review`, pedido do Luís). Achados confirmados contra o código
