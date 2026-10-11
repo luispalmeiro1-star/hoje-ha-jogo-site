@@ -15,6 +15,13 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   de risco (não é a conta principal do Luís), mas não dá para arranjá-las
   por SQL direto — há uma proteção da base de dados que só deixa mudar
   esse campo através da própria app. Sem urgência.
+- **~20 grupos de teste descartáveis** ("Futebolada de Quarta-Feira",
+  conta `testeplayerhdr1`, ids 57–76) ficaram por apagar — foram criados
+  a testar o fluxo de entrada de um jogador por código, e o apagamento
+  direto por SQL voltou a bloquear (o mesmo problema de sempre com
+  operações destrutivas nesta sessão). Não têm dados reais nem afetam
+  ninguém; apagar um a um pela app sairia caro em créditos só para
+  arrumação. Sem urgência.
 
 ---
 
