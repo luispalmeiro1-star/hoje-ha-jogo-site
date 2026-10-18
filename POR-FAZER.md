@@ -50,6 +50,25 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
 Registo condensado — detalhe completo nos relatórios em
 `.impeccable/critique/` e no histórico de commits de `hoje-ha-jogo`.
 
+**18/10/2026 — revisão completa (pedido do Luís):**
+- **10 bugs de dinheiro corrigidos** (`/code-review` ao ficheiro inteiro,
+  commit `a9db02a` em `main`):
+  - Mealheiro detalhado sincronizado em todos os caminhos — desmarcar
+    presença, trocar lugares, painel do tesoureiro, "Reiniciar mealheiro"
+    e "Terminar época" também criam/limpam o recebimento (antes ficavam
+    recebimentos fantasma ou em falta).
+  - Nova permissão na base de dados para o tesoureiro poder apagar
+    recebimentos (antes só o admin).
+  - Duplo toque em "✓ Recebido" já não paga duas vezes; "Marcar todas
+    recebidas" paga uma a uma (antes podia perder somas no jogo).
+  - Pagar 2.999€ de uma dívida de 3€ conta como pago (antes ficava uma
+    dívida de 0€ para sempre).
+  - Marcar "pago" volta atrás se o servidor recusar.
+  - Totais em euros arredondados a cêntimos (botão MBWay já não pode
+    mostrar 3.3000000000000003€).
+  - MBWay do jogador já não cobra convidados já pagos.
+  - "Adicionar ao calendário" funciona em Safari/iPhone; carimbo em UTC.
+
 **11/10/2026:**
 - **Adicionar o jogo ao calendário do telemóvel.** Ideia nova do Luís:
   o dia/hora do jogo só existia dentro da app, era preciso criar o
