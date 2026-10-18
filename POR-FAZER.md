@@ -31,8 +31,10 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   - "Anular" de 5 segundos depois de NÃO VOU, em vez da confirmação.
   - Deixar fazer zoom no telemóvel (hoje bloqueado no `index.html`; custa
     o iPhone ampliar sozinho ao tocar num campo de texto).
-- **Grupo de teste 78** (conta `revisaoadm1`) da revisão de 18/10 ficou
-  por apagar se a limpeza pela app falhar — ver commit desta data.
+- **6 grupos órfãos na base de dados** (sem membros; um deles é o grupo
+  de teste 78 da revisão de 18/10) — restos do bug do "Apagar grupo"
+  corrigido nesse dia. Já não aparecem a ninguém; só saem com um DELETE
+  por SQL, que esta sessão não consegue correr sem aprovação. Sem urgência.
 
 ---
 
@@ -91,6 +93,10 @@ Registo condensado — detalhe completo nos relatórios em
   - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
   - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
     calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
+- **"Apagar grupo" deixava o grupo meio apagado** (commit `c802ab6`): o
+  admin era tirado do grupo antes de se apagarem os dados, e a partir daí
+  a base de dados escondia-lhos — jogo, dívidas, chat e o grupo ficavam
+  órfãos. Testado na app com um grupo novo: agora sai tudo.
 
 **11/10/2026:**
 - **Adicionar o jogo ao calendário do telemóvel.** Ideia nova do Luís:
