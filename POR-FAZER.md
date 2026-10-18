@@ -23,6 +23,17 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   ninguém; apagar um a um pela app sairia caro em créditos só para
   arrumação. Sem urgência.
 
+- **Ideias da revisão de 18/10/2026, por decidir com o Luís** (maiores,
+  não feitas sem ele ver):
+  - Admin com 4 separadores fixos no topo ("Jogo · Equipas · Pessoas ·
+    Dinheiro") em vez de 6 que só aparecem a ~790px de scroll.
+  - Juntar o dinheiro (hoje espalhado por 5 sítios) num só ecrã.
+  - "Anular" de 5 segundos depois de NÃO VOU, em vez da confirmação.
+  - Deixar fazer zoom no telemóvel (hoje bloqueado no `index.html`; custa
+    o iPhone ampliar sozinho ao tocar num campo de texto).
+- **Grupo de teste 78** (conta `revisaoadm1`) da revisão de 18/10 ficou
+  por apagar se a limpeza pela app falhar — ver commit desta data.
+
 ---
 
 ## Decisões em aberto (do Luís)
@@ -68,6 +79,18 @@ Registo condensado — detalhe completo nos relatórios em
     mostrar 3.3000000000000003€).
   - MBWay do jogador já não cobra convidados já pagos.
   - "Adicionar ao calendário" funciona em Safari/iPhone; carimbo em UTC.
+- **Crítica de design com o Impeccable: 21/40** (1 P0, 3 P1). Corrigido
+  logo, nas duas vistas (commit `24a31d6` em `main`):
+  - Texto apagado `#565c4d` → `#7d8472` (contraste 2,6:1 → legível) e
+    nada abaixo de 10px; etiquetas da barra de baixo a 11px.
+  - [P0] NÃO VOU com lista de espera pede confirmação (o lugar passa logo
+    para o próximo); o botão passou de vermelho cheio a contorno.
+  - Chip de estado na lista de jogadores do admin com a cor certa
+    (estava ao contrário: "Dentro" a vermelho).
+  - Convidados sem o roxo (contorno tracejado neutro).
+  - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
+  - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
+    calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
 
 **11/10/2026:**
 - **Adicionar o jogo ao calendário do telemóvel.** Ideia nova do Luís:

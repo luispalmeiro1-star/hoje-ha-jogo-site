@@ -8,7 +8,7 @@ colors:
   linha: "#23271b"
   texto: "#ffffff"
   texto-suave: "#8a9080"
-  texto-apagado: "#565c4d"
+  texto-apagado: "#7d8472"
   verde-confirmado: "#4ade80"
   verde-solido: "#1ea851"
   verde-escuro: "#04240f"
@@ -139,7 +139,7 @@ interessa, e verde e vermelho a fazer o trabalho de dizer como estão as coisas.
   1px e divisórias. É ela que desenha a estrutura.
 - **Branco** (`#ffffff`): texto principal e números.
 - **Texto suave** (`#8a9080`): legendas, ajudas e texto secundário.
-- **Texto apagado** (`#565c4d`): rodapés e notas de pé.
+- **Texto apagado** (`#7d8472`): rodapés e notas de pé. Era `#565c4d` até 18/10/2026 — subiu porque dava 2,6:1 de contraste e não se lia ao sol. Nada de texto abaixo de 10px.
 
 ### Named Rules
 
