@@ -36,7 +36,6 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   - Admin com 4 separadores fixos no topo ("Jogo · Equipas · Pessoas ·
     Dinheiro") em vez de 6 que só aparecem a ~790px de scroll; o admin com
     os mesmos botões VOU / NÃO VOU grandes do jogador.
-  - Juntar o dinheiro (hoje espalhado por 5 sítios) num só ecrã.
   - "Apito final": fechar o jogo como uma sequência guiada (resultado →
     MVP → contas), com aspeto de marcador.
   - Convidados no MVP: entram na votação ou não?
@@ -108,6 +107,13 @@ Registo condensado — detalhe completo nos relatórios em
   - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
   - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
     calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
+**19/10/2026 — dinheiro só em dois sítios (pedido do Luís):** Finanças e
+Stats → Grupo → Mealheiro. O separador Dívidas do admin passou para dentro
+de Finanças (Recebido, Lembrar, Marcar todas, dívida manual), Registar
+despesa e Reiniciar mealheiro também; o ecrã de dívidas à parte saiu (o
+banner do jogador abre Finanças); Histórico e "Jogo anterior" deixaram de
+mostrar montantes. Admin passa de 6 para 5 separadores. Testado na app.
+
 **19/10/2026 — revisão completa, 2.ª parte (o que faltava):**
 - **Base de dados:** avisos de segurança e desempenho revistos; funções e
   regras verificadas, sem buracos graves.
