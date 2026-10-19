@@ -23,18 +23,33 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   ninguém; apagar um a um pela app sairia caro em créditos só para
   arrumação. Sem urgência.
 
-- **Ideias da revisão de 18/10/2026, por decidir com o Luís** (maiores,
+- **Painel da OneSignal (só o Luís pode):** aparece um pedido de
+  notificações em inglês ("Subscribe to our notifications…") na página
+  inicial e na demo. O código já o tem desligado (`autoPrompt: false`), mas
+  o painel sobrepõe-se. Em onesignal.com → a app → Settings → Push &
+  In-App → Web → Permission Prompt Setup: desligar o "Auto-prompt" do
+  Push Slide Prompt (ou mudar a integração para "Custom Code").
+- **Zoom no telemóvel** (pergunta feita ao Luís a 18/10, à espera de
+  resposta): letra dos campos a 16px e tirar o bloqueio de zoom.
+- **Ideias das revisões de 18–19/10/2026, por decidir com o Luís** (maiores,
   não feitas sem ele ver):
   - Admin com 4 separadores fixos no topo ("Jogo · Equipas · Pessoas ·
-    Dinheiro") em vez de 6 que só aparecem a ~790px de scroll.
+    Dinheiro") em vez de 6 que só aparecem a ~790px de scroll; o admin com
+    os mesmos botões VOU / NÃO VOU grandes do jogador.
   - Juntar o dinheiro (hoje espalhado por 5 sítios) num só ecrã.
-  - "Anular" de 5 segundos depois de NÃO VOU, em vez da confirmação.
-  - Deixar fazer zoom no telemóvel (hoje bloqueado no `index.html`; custa
-    o iPhone ampliar sozinho ao tocar num campo de texto).
-- **6 grupos órfãos na base de dados** (sem membros; um deles é o grupo
-  de teste 78 da revisão de 18/10) — restos do bug do "Apagar grupo"
-  corrigido nesse dia. Já não aparecem a ninguém; só saem com um DELETE
-  por SQL, que esta sessão não consegue correr sem aprovação. Sem urgência.
+  - "Apito final": fechar o jogo como uma sequência guiada (resultado →
+    MVP → contas), com aspeto de marcador.
+  - Convidados no MVP: entram na votação ou não?
+  - Futebol de 7 (e 5) em "Criar grupo" — hoje só há Futsal e Futebol de 11.
+  - "Anular" de 5 segundos (NÃO VOU, Recebido, vencedor) em vez de confirmar.
+  - Página inicial: trocar a grelha genérica de 6 mosaicos e o "1-2-3" por
+    números e capturas reais.
+  - Zona: mostrar os campos só com "Estou disponível" ligado.
+- **Grupos órfãos:** 6 grupos sem membros (restos do bug do "Apagar grupo",
+  corrigido a 18/10) apagam-se sozinhos — a limpeza automática das 3h
+  (`cleanup_orphan_groups`) remove grupos sem membros ao fim de 7 dias.
+- **Contas de teste** `revisaoadm1-3` / `revisaojog1-3` (sem grupo) ficaram
+  na base de dados. Não aparecem a ninguém.
 
 ---
 
@@ -93,6 +108,32 @@ Registo condensado — detalhe completo nos relatórios em
   - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
   - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
     calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
+**19/10/2026 — revisão completa, 2.ª parte (o que faltava):**
+- **Base de dados:** avisos de segurança e desempenho revistos; funções e
+  regras verificadas, sem buracos graves.
+- **Funções do servidor (19 revistas, 3 corrigidas e testadas):**
+  - `send-notification` deixava qualquer pessoa que criasse um grupo mandar
+    avisos com texto à escolha a qualquer jogador da app — agora só para
+    membros do próprio grupo.
+  - `join-open-game`: o aviso ao admin quando alguém entra pela vaga aberta
+    não chegava; o link aceitava inscrições até 1h depois do início (UTC).
+  - `close-finished-games`: quem pagou e depois não jogou conta no mealheiro.
+- **App, bugs encontrados cruzando o código com as regras da base de dados**
+  (testados de ponta a ponta na app publicada):
+  - Quem já tinha pago não conseguia dizer NÃO VOU (dava sempre erro).
+  - Fechar o jogo à mão: dívida de convidado perdia-se se quem o convidou
+    não jogava; convidados em espera nunca eram apagados; sequências não
+    voltavam a zero. Agora igual ao fecho automático.
+  - "Sair e nomear novo admin" mostrava sempre a lista vazia.
+  - Mensagens de sucesso em erros (convidado, jogo, posição, dívida, sair).
+- **Velocidade:** gráficos carregam a pedido — código inicial de 1062 KB
+  para 686 KB; ecrã de arranque sem 1,2 s fixos (1,5 s até utilizável).
+- **Crítica Impeccable aos ecrãs secundários: 24/40** — 12 correções
+  aplicadas nas duas vistas (botões em Arial → tipo de letra da app,
+  pergunta do vencedor só com equipas, avisos ao fechar jogo, MVP explica,
+  Recebido legível, perfil, Zona, convite sem sessão, banner de dívida diz
+  de quê, dourado/azul no sítio).
+
 - **"Apagar grupo" deixava o grupo meio apagado** (commit `c802ab6`): o
   admin era tirado do grupo antes de se apagarem os dados, e a partir daí
   a base de dados escondia-lhos — jogo, dívidas, chat e o grupo ficavam
