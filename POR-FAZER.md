@@ -107,6 +107,13 @@ Registo condensado — detalhe completo nos relatórios em
   - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
   - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
     calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
+**21/10/2026 — pedir a quem não vai que o diga (pedido do Luís):** a malta
+não marcava "não vou". Lembrete das 9h passa a pedir "VOU ou NÃO VOU" e
+há um 3.º lembrete às 15h do dia do jogo (só a quem não respondeu); frase
+por baixo dos botões VOU/NÃO VOU na app. Jogadores vêem agora os nomes de
+quem não respondeu e de quem não vai (Lista do jogo). Login com limite de
+12 s. Se 3 avisos for demais, tirar o das 15h em `notify-reminders`.
+
 **19/10/2026 — dinheiro só em dois sítios (pedido do Luís):** Finanças e
 Stats → Grupo → Mealheiro. O separador Dívidas do admin passou para dentro
 de Finanças (Recebido, Lembrar, Marcar todas, dívida manual), Registar
