@@ -29,8 +29,6 @@ Relatórios completos das críticas de design (`/impeccable critique`) ficam em
   o painel sobrepõe-se. Em onesignal.com → a app → Settings → Push &
   In-App → Web → Permission Prompt Setup: desligar o "Auto-prompt" do
   Push Slide Prompt (ou mudar a integração para "Custom Code").
-- **Zoom no telemóvel** (pergunta feita ao Luís a 18/10, à espera de
-  resposta): letra dos campos a 16px e tirar o bloqueio de zoom.
 - **Ideias das revisões de 18–19/10/2026, por decidir com o Luís** (maiores,
   não feitas sem ele ver):
   - Admin com 4 separadores fixos no topo ("Jogo · Equipas · Pessoas ·
