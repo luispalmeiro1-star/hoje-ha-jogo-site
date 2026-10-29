@@ -105,6 +105,14 @@ Registo condensado — detalhe completo nos relatórios em
   - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
   - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
     calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
+**29/10/2026 — apito final e cobrança aos convidados:** fechar o jogo é agora
+um painel em passos (resultado só se houve equipas → contas com o que fica
+por cobrar e a quem → confirmar); dívidas de convidados têm o botão "Pedir ao
+<nome>" (WhatsApp com a mensagem pronta). **Por fazer:** gatilho na base de
+dados que promove sozinho a fila de espera (migração `auto_promote_waitlist`,
+SQL em `supabase-migrations/`): o Supabase pediu confirmação na ferramenta e
+deu timeout duas vezes. Aplicar colando o SQL no editor SQL do Supabase.
+
 **21/10/2026 — pedir a quem não vai que o diga (pedido do Luís):** a malta
 não marcava "não vou". Lembrete das 9h passa a pedir "VOU ou NÃO VOU" e
 há um 3.º lembrete às 15h do dia do jogo (só a quem não respondeu); frase
