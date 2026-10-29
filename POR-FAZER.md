@@ -105,6 +105,11 @@ Registo condensado — detalhe completo nos relatórios em
   - Sair da conta pede confirmação; setas do histórico dizem "Anterior".
   - Áreas de toque maiores (pago, ícones, separadores, "Agora não",
     calendário); datas das dívidas em DD/MM; mealheiro a 0 mostra "0€".
+**29/10/2026 — aviso de votação MVP:** 10 h depois de o jogo fechar (2 h antes
+de a votação acabar) sai uma notificação só a quem jogou e ainda não votou
+(em `notify-reminders`, janela [10h, 11h) de cada jogo). Não tem teste com
+notificação real — vê-se na próxima votação.
+
 **29/10/2026 — apito final e cobrança aos convidados:** fechar o jogo é agora
 um painel em passos (resultado só se houve equipas → contas com o que fica
 por cobrar e a quem → confirmar); dívidas de convidados têm o botão "Pedir ao
