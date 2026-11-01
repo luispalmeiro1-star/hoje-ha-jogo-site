@@ -686,3 +686,7 @@ mostrar montantes. Admin passa de 6 para 5 separadores. Testado na app.
 - Botão "Anular" (8 s) no aviso após: NÃO VOU, pago/retirar pago, "Recebido" de dívida e vencedor do jogo. Em jogos já fechados, "↩ Corrigir vencedor" no histórico (admin).
 - "Criar grupo" e Gerir: Futsal, Futebol de 5, 7 e 11 (constraint `groups_sport_type_check` atualizada na BD).
 - Página de entrada: cartão "Um grupo real, às quartas" com números reais do grupo 37 (29 jogadores, 7 jogos, 80 presenças, 52 votos MVP) e nomes inventados. Atualizar à mão de vez em quando.
+
+## 1/11 — Ritmo de publicações
+- Calendário de Novembro (8 publicações, terça e quinta às 19h): `social/novembro/CALENDARIO.md` + 8 imagens.
+- Ideia por fazer: cartão "Jogas noutro grupo? Mostra-lhes isto" depois do jogo fechado (partilha pelos jogadores).
