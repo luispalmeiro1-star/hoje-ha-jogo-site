@@ -1,32 +1,35 @@
+-- O papel é lido com auth.role() (que vê tanto request.jwt.claim.role como
+-- request.jwt.claims) e reposto no fim, porque promote_waitlist deixa
+-- 'service_role' ligado até ao fim da transação.
 -- Promove sozinho quem está em espera quando sobra um lugar (sai alguém, é
 -- removido, ou o admin sobe o limite). Usa a função promote_waitlist que já existe.
 create or replace function public.trg_promover_fila_update()
 returns trigger language plpgsql security definer set search_path to 'public' as $$
-declare gid bigint; papel text;
+declare gid bigint; papel text; mexeu boolean := false;
 begin
   if pg_trigger_depth() > 1 then return null; end if;
-  papel := current_setting('request.jwt.claim.role', true);
+  papel := auth.role();
   for gid in
     select distinct o.group_id from old_rows o join new_rows n on n.id = o.id
     where o.status = 'in' and o.membership_status = 'active'
       and (n.status <> 'in' or n.membership_status <> 'active')
-  loop perform public.promote_waitlist(gid); end loop;
-  perform set_config('request.jwt.claim.role', coalesce(papel, ''), true);
+  loop perform public.promote_waitlist(gid); mexeu := true; end loop;
+  if mexeu then perform set_config('request.jwt.claim.role', coalesce(papel, ''), true); end if;
   return null;
 end; $$;
 
 create or replace function public.trg_promover_fila_delete()
 returns trigger language plpgsql security definer set search_path to 'public' as $$
-declare gid bigint; papel text;
+declare gid bigint; papel text; mexeu boolean := false;
 begin
   if pg_trigger_depth() > 1 then return null; end if;
-  papel := current_setting('request.jwt.claim.role', true);
+  papel := auth.role();
   for gid in
     select distinct o.group_id from old_rows o
     where o.status = 'in' and o.membership_status = 'active'
       and exists (select 1 from groups g where g.id = o.group_id)
-  loop perform public.promote_waitlist(gid); end loop;
-  perform set_config('request.jwt.claim.role', coalesce(papel, ''), true);
+  loop perform public.promote_waitlist(gid); mexeu := true; end loop;
+  if mexeu then perform set_config('request.jwt.claim.role', coalesce(papel, ''), true); end if;
   return null;
 end; $$;
 
@@ -35,7 +38,7 @@ returns trigger language plpgsql security definer set search_path to 'public' as
 declare papel text;
 begin
   if pg_trigger_depth() > 1 then return null; end if;
-  papel := current_setting('request.jwt.claim.role', true);
+  papel := auth.role();
   perform public.promote_waitlist(new.id);
   perform set_config('request.jwt.claim.role', coalesce(papel, ''), true);
   return null;
