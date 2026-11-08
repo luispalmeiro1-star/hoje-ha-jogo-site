@@ -699,4 +699,4 @@ mostrar montantes. Admin passa de 6 para 5 separadores. Testado na app.
 - Cartão "Jogas noutro grupo?" (4 dias após o jogo, só a quem jogou) — passo `partilhou_app` no funil.
 - Logótipo novo (bola plana) em ícones, arranque, topo e og.png.
 - Dezembro: `social/dezembro/` (8 imagens + Reel 15 s + CALENDARIO.md).
-- POR FAZER: apagar grupos de teste 54, 57–76 e 84 (o Supabase pede confirmação ao Luís). O gatilho `auto_promote_waitlist.sql` deixou de ser preciso: o cron `promover-convidados` (5 em 5 min) já promove.
+- Feito: apagados os grupos de teste 54, 57–76 e 84. O gatilho `auto_promote_waitlist.sql` deixou de ser preciso: o cron `promover-convidados` (5 em 5 min) já promove.
