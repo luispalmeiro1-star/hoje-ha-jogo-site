@@ -690,3 +690,13 @@ mostrar montantes. Admin passa de 6 para 5 separadores. Testado na app.
 ## 1/11 — Ritmo de publicações
 - Calendário de Novembro (8 publicações, terça e quinta às 19h): `social/novembro/CALENDARIO.md` + 8 imagens.
 - Ideia por fazer: cartão "Jogas noutro grupo? Mostra-lhes isto" depois do jogo fechado (partilha pelos jogadores).
+
+## 08/11 — Ronda grande
+- Formulário de criar jogo: passo 1 só com o nome; telemóvel/email fechados; medição `escreveu_nome`.
+- Primeiros passos depois de criar (dia+hora → `game_days`, local, preço, tipo, convite WhatsApp).
+- Corrigido: fechar um jogo antes da hora marcava o seguinte para trás; grupos novos começavam com renda de 22€ (default da coluna passou a 0).
+- Anular do NÃO VOU com estado de agora (refs) — testado.
+- Cartão "Jogas noutro grupo?" (4 dias após o jogo, só a quem jogou) — passo `partilhou_app` no funil.
+- Logótipo novo (bola plana) em ícones, arranque, topo e og.png.
+- Dezembro: `social/dezembro/` (8 imagens + Reel 15 s + CALENDARIO.md).
+- POR FAZER: apagar grupos de teste 54, 57–76 e 84 (o Supabase pede confirmação ao Luís). O gatilho `auto_promote_waitlist.sql` deixou de ser preciso: o cron `promover-convidados` (5 em 5 min) já promove.
