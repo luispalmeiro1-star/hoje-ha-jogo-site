@@ -700,3 +700,16 @@ mostrar montantes. Admin passa de 6 para 5 separadores. Testado na app.
 - Logótipo novo (bola plana) em ícones, arranque, topo e og.png.
 - Dezembro: `social/dezembro/` (8 imagens + Reel 15 s + CALENDARIO.md).
 - Feito: apagados os grupos de teste 54, 57–76 e 84. O gatilho `auto_promote_waitlist.sql` deixou de ser preciso: o cron `promover-convidados` (5 em 5 min) já promove.
+
+## 08/11 — Teste grande (5 contas, produção)
+Passou: criar jogo + primeiros passos, entrar por link, aprovar, presenças, lista de espera + Anular, prioridade de convidados, pagamentos + Anular, chat em tempo real, fechar jogo (histórico, mealheiro, dívidas, presenças, convidado apagado, próxima data certa), votos MVP, Recebido + Anular, estatísticas, mudar nome no perfil, sair do grupo, Gerir, demo, password errada, privacidade, 3 ecrãs no computador.
+
+Corrigido durante o teste:
+- Pedidos de entrada só apareciam em Gerir → agora também em Jogo.
+- Com um só grupo, o login já entra diretamente no jogo.
+- Cartão do grupo dizia "Sem jogo próximo" para jogos a mais de 7 dias → mostra a data.
+- "só faltam 1" → "só falta 1 lugar".
+- Mudar o nome não passava para dívidas/presenças/pagamentos → gatilho `propagar_nome_jogador` (`supabase-migrations/propagar_nome_jogador.sql`, aplicado).
+- Criar conta demorava ~7 s → ~4 s (aviso ao admin já não bloqueia).
+- Apagar grupo falhava a meio (403/409) → função `apagar_grupo` no servidor (`supabase-migrations/apagar_grupo.sql`, **aplicada**). Testado pela app: grupo com jogador aprovado e convidado apagado, zero dados órfãos.
+- Contas de teste (8) e grupo 85 apagados.
