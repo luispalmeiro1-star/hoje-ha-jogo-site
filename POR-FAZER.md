@@ -714,10 +714,13 @@ Corrigido durante o teste:
 - Apagar grupo falhava a meio (403/409) → função `apagar_grupo` no servidor (`supabase-migrations/apagar_grupo.sql`, **aplicada**). Testado pela app: grupo com jogador aprovado e convidado apagado, zero dados órfãos.
 - Contas de teste (8) e grupo 85 apagados.
 
-## 11/11 — "Não houve jogo"
-- Pedido do Luís: a quarta de 11/11 não teve jogo e os confirmados ficaram na lista. Só existia "Fechar jogo", que registava o jogo como jogado (presenças, dívidas, histórico).
-- Feito: botão **"Não houve jogo esta semana?"** no ecrã do admin, por baixo de "Apito final". Todos voltam a sem resposta, os convidados saem, nada fica registado. Quem já pagou continua pago (o pagamento passa para a nova data). Quem estava confirmado recebe aviso para confirmar de novo. Data do próximo jogo: mesmo dia na semana seguinte, editável.
+## 11/11 — Reiniciar a lista e "sem resposta" por jogador
+- Pedido do Luís: a quarta de 11/11 não teve jogo e os confirmados ficaram na lista. Só existia "Fechar jogo" (registava o jogo como jogado) e, jogador a jogador, só dava para pôr em "não vou".
+- 1.ª versão ("Não houve jogo", com data nova e aviso aos jogadores): o Luís disse que era de mais. Quer **unicamente** repor em "sem resposta".
+- Feito e publicado:
+  - **🔄 Reiniciar a lista** — separador Jogo, por baixo de "Apito final". Todos voltam a sem resposta e os convidados saem. Não muda a data, não mexe em pagamentos, não regista nada, não manda avisos.
+  - **Jogadores → toque no estado do jogador** — agora abre uma escolha (Vai jogar / Não vai / Sem resposta) em vez de só sim/não. Convidados não têm "sem resposta".
 - Grupo 37 limpo à mão nesse dia (30 jogadores sem resposta, 2 convidados do Miguel Santos removidos, jogo a 18/11).
-- Teste: `scratchpad/grande/naohouve.js` (9 verificações, passou em local e em produção).
-- **Por fazer:** apagar os grupos de teste 87–91 ("Teste NaoHouve …") e as contas `tnhadm…` (671, 673, 675, 677, 679). O pedido de confirmação do Supabase expirou.
+- Teste: `scratchpad/grande/reiniciar.js` (12 verificações, passou em local e em produção).
+- **Por fazer:** apagar os grupos de teste "Teste NaoHouve …" e "Teste Reiniciar …" (87–96) e as contas `tnhadm…` / `trladm…`. O pedido de confirmação do Supabase expirou da primeira vez.
 - Publicações extra: `social/hoje-ha-jogo-47-mensagens.png` (publicada a 11/11 em 11 grupos) e `social/hoje-ha-jogo-o-que-faz.png`.
