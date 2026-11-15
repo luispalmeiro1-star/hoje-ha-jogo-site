@@ -724,3 +724,13 @@ Corrigido durante o teste:
 - Teste: `scratchpad/grande/reiniciar.js` (12 verificações, passou em local e em produção).
 - **Por fazer:** apagar os grupos de teste "Teste NaoHouve …" e "Teste Reiniciar …" (87–96) e as contas `tnhadm…` / `trladm…`. O pedido de confirmação do Supabase expirou da primeira vez.
 - Publicações extra: `social/hoje-ha-jogo-47-mensagens.png` (publicada a 11/11 em 11 grupos) e `social/hoje-ha-jogo-o-que-faz.png`.
+
+## 15/11 — Revisão geral
+- **Fecho automático** (`close-finished-games` v11): com menos de 4 confirmados não conta como jogo — sem dívidas, presenças, histórico nem aviso de MVP; a lista volta ao início e a data avança. Caso real: Xapa Green Soccer (97), admin Ismael ficou com 3 € de dívida por um "jogo" de 1 pessoa a 13/11. Testado no grupo de teste 96.
+- **Criar conta**: "Username" → "Utilizador", sugerido a partir do nome (os dois formulários).
+- **Ecrã do admin**: convidados numa lista só; a frase do prazo aparece uma vez.
+- **Medição**: `grupo_criado` perdia-se no recarregamento da página; agora espera até 1 s.
+- **Lentidão**: criar conta ~8 s medidos daqui (fora de Portugal). Gasta-se no registo no servidor (2–3 s) e no recarregamento da página (~3 s). Pôr pedidos em paralelo não deu ganho mensurável. Por fazer: entrar na app sem recarregar a página.
+- **Por fazer (precisa da confirmação do Luís no ecrã):** tirar a dívida/jogo falso do Ismael, apagar a linha duplicada do histórico de 14/10 (grupo 37), grupos e contas de teste, convidados soltos, e limpeza semanal dos registos do cron (36 mil linhas).
+- Segurança: 7 das 15 funções assinaladas pelo Supabase foram abertas; sem falhas exploráveis.
+- Testes: `scratchpad/grande/revisao.js`, `revisao2.js`, `lento.js`.
