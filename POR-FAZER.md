@@ -742,3 +742,9 @@ Corrigido durante o teste:
 - Teste: `scratchpad/grande/guias.js` (12 verificações, passou em local e em produção).
 - **Por fazer (Luís):** registar o site no Google Search Console e enviar `https://hojehajogo.pt/sitemap.xml`. Sem isso o Google pode demorar semanas a encontrar as páginas.
 - Ideias de guias seguintes: "votar no MVP", "futebol de 5 vs futsal: regras", "o que levar para o jogo", páginas por cidade só se houver conteúdo real.
+
+## 16/11 — Notificações nos primeiros passos
+- Tentativa de avisar os admins dos grupos 97 e 98 falhou: nenhum tem notificações ativas, nem telemóvel/email. Função `aviso-unico` criada para o envio e desligada (devolve 410).
+- Feito: 4.º passo nos primeiros passos, "Queres saber quando alguém confirmar?", só a quem ainda pode responder. Medição: `avisos_sim` / `avisos_nao` no funil.
+- Não testado: o pedido real do browser (o teste simula um telemóvel onde ainda não foi pedido e carrega em "Agora não").
+- Por fazer: mostrar avisos dentro da app ao admin quando a abre; apagar o grupo/contas "Teste Avisos"/`tavadm…` que sobraram.
