@@ -734,3 +734,11 @@ Corrigido durante o teste:
 - **Por fazer (precisa da confirmação do Luís no ecrã):** tirar a dívida/jogo falso do Ismael, apagar a linha duplicada do histórico de 14/10 (grupo 37), grupos e contas de teste, convidados soltos, e limpeza semanal dos registos do cron (36 mil linhas).
 - Segurança: 7 das 15 funções assinaladas pelo Supabase foram abertas; sem falhas exploráveis.
 - Testes: `scratchpad/grande/revisao.js`, `revisao2.js`, `lento.js`.
+
+## 16/11 — Guias (páginas para o Google)
+- Publicado em `hojehajogo.pt/guias/`: índice + 5 guias (organizar o jogo, sortear equipas com ferramenta grátis, lista de presenças, dividir o custo do campo, lista de espera e convidados).
+- HTML simples dentro do repositório da app (`public/guias/`), gerado por `scripts/gerar-guias.py` (também escreve o `sitemap.xml`). Para juntar um guia: nova entrada em `PAGINAS` e `INDICE`, e correr o script.
+- O service worker deixa passar `/guias` (`vite.config.js`). A página de entrada liga aos guias no rodapé.
+- Teste: `scratchpad/grande/guias.js` (12 verificações, passou em local e em produção).
+- **Por fazer (Luís):** registar o site no Google Search Console e enviar `https://hojehajogo.pt/sitemap.xml`. Sem isso o Google pode demorar semanas a encontrar as páginas.
+- Ideias de guias seguintes: "votar no MVP", "futebol de 5 vs futsal: regras", "o que levar para o jogo", páginas por cidade só se houver conteúdo real.
